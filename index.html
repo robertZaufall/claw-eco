@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Agent Framework Comparison</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0c0e13;
+    --surface: #13161d;
+    --surface2: #1a1e28;
+    --border: #252a36;
+    --text: #e2e4ea;
+    --text-muted: #8b90a0;
+    --accent-blue: #4d9fff;
+    --accent-green: #3dd68c;
+    --accent-purple: #a78bfa;
+    --accent-orange: #f59e42;
+    --accent-pink: #f472b6;
+    --accent-cyan: #22d3ee;
+    --accent-red: #f87171;
+    --accent-yellow: #fbbf24;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    padding: 40px 24px;
+    min-height: 100vh;
+  }
+
+  .header {
+    max-width: 1400px;
+    margin: 0 auto 36px;
+  }
+
+  .header h1 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text);
+  }
+
+  .header h1 span { color: var(--accent-blue); }
+
+  .header p {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 6px;
+  }
+
+  .table-wrap {
+    max-width: 1400px;
+    margin: 0 auto;
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    min-width: 1100px;
+  }
+
+  thead th {
+    background: var(--surface2);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--text-muted);
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 2;
+  }
+
+  thead th:first-child { border-radius: 11px 0 0 0; }
+  thead th:last-child { border-radius: 0 11px 0 0; }
+
+  tbody td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    line-height: 1.55;
+  }
+
+  tbody tr:last-child td { border-bottom: none; }
+
+  tbody tr:hover { background: rgba(77, 159, 255, 0.03); }
+
+  .name-cell {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    font-family: 'JetBrains Mono', monospace;
+    margin-top: 4px;
+  }
+
+  .tag-ts { background: rgba(77, 159, 255, 0.12); color: var(--accent-blue); }
+  .tag-c { background: rgba(248, 113, 113, 0.12); color: var(--accent-red); }
+  .tag-rust { background: rgba(245, 158, 66, 0.12); color: var(--accent-orange); }
+  .tag-py { background: rgba(61, 214, 140, 0.12); color: var(--accent-green); }
+  .tag-go { background: rgba(34, 211, 238, 0.12); color: var(--accent-cyan); }
+  .tag-zig { background: rgba(167, 139, 250, 0.12); color: var(--accent-purple); }
+  .tag-js { background: rgba(251, 191, 36, 0.12); color: var(--accent-yellow); }
+
+  .metric {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    font-size: 13px;
+  }
+
+  .metric-sm {
+    font-size: 11px;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  .channels-list {
+    color: var(--text-muted);
+    font-size: 12px;
+  }
+
+  .highlight {
+    color: var(--accent-green);
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 7px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    background: rgba(61, 214, 140, 0.1);
+    color: var(--accent-green);
+    margin-right: 3px;
+    margin-bottom: 2px;
+  }
+
+  .badge-warn {
+    background: rgba(245, 158, 66, 0.1);
+    color: var(--accent-orange);
+  }
+
+  .badge-info {
+    background: rgba(167, 139, 250, 0.1);
+    color: var(--accent-purple);
+  }
+
+  .purpose {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+
+  .gh-stats {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 4px;
+  }
+
+  .star-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--accent-yellow);
+  }
+
+  .fork-count {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  .gh-link {
+    display: block;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--accent-blue);
+    text-decoration: none;
+    margin-top: 4px;
+    opacity: 0.85;
+    transition: opacity 0.15s;
+  }
+
+  .gh-link:hover { opacity: 1; text-decoration: underline; }
+
+  .footer {
+    max-width: 1400px;
+    margin: 20px auto 0;
+    font-size: 11px;
+    color: var(--text-muted);
+    font-family: 'JetBrains Mono', monospace;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1><span>&gt;</span> AI Agent Frameworks — Spec Comparison</h1>
+  <p>OpenClaw ecosystem & alternatives · March 2026</p>
+</div>
+
+<div class="table-wrap">
+<table>
+<thead>
+  <tr>
+    <th>Framework</th>
+    <th>Language</th>
+    <th>Focus / Purpose</th>
+    <th>Footprint</th>
+    <th>Providers</th>
+    <th>Channels</th>
+    <th>Key Features</th>
+    <th>Target Hardware</th>
+    <th>GitHub / License</th>
+  </tr>
+</thead>
+<tbody>
+
+  <!-- OpenClaw -->
+  <tr>
+    <td>
+      <div class="name-cell" style="color: var(--accent-blue);">OpenClaw</div>
+      <div class="tag tag-ts">TypeScript</div>
+    </td>
+    <td><span class="metric">TypeScript</span><br><span class="metric-sm">Node.js</span></td>
+    <td>Full-featured personal AI assistant. The original &amp; most popular agent framework.</td>
+    <td>
+      <span class="metric">~430k</span> <span class="metric-sm">lines</span><br>
+      <span class="metric-sm">100+ MB RAM</span>
+    </td>
+    <td>Model-agnostic: Claude, GPT-4, Gemini, DeepSeek, Ollama, vLLM, local models</td>
+    <td class="channels-list">22+: WhatsApp, Telegram, Slack, Discord, Signal, iMessage, Teams, Matrix, IRC, LINE, Google Chat, Nostr, Twitch, etc.</td>
+    <td>
+      <span class="badge">ReAct loop</span>
+      <span class="badge">Heartbeat</span>
+      <span class="badge">Skills / ClawHub</span>
+      <span class="badge">Browser control</span>
+      <span class="badge">Voice</span>
+      <span class="badge">Live Canvas</span>
+      <span class="badge">Multi-agent</span>
+      <span class="badge">Companion apps</span>
+    </td>
+    <td>Mac, Linux, VPS, Raspberry Pi</td>
+    <td>
+      <div class="gh-stats">
+        <span class="star-count">★ 263k</span>
+        <span class="fork-count">⑂ 50k</span>
+      </div>
+      <a class="gh-link" href="https://github.com/openclaw/openclaw" target="_blank">openclaw/openclaw</a>
+      <span class="metric-sm">MIT</span>
+    </td>
+  </tr>
+
+  <!-- ZClaw -->
+  <tr>
+    <td>
+      <div class="name-cell" style="color: var(--accent-red);">zclaw</div>
+      <div class="tag tag-c">C</div>
+    </td>
+    <td><span class="metric">C</span><br><span class="metric-sm">ESP-IDF</span></td>
+    <td>Smallest OpenClaw-based agent for ESP32 microcontrollers. Extreme embedded footprint.</td>
+    <td>
+      <span class="metric highlight">888 KiB</span> <span class="metric-sm">all-in firmware</span><br>
+      <span class="metric-sm">(~35 KB app code)</span>
+    </td>
+    <td>Any LLM via Telegram relay or HTTP host</td>
+    <td class="channels-list">Telegram, host serial relay</td>
+    <td>
+      <span class="badge">GPIO control</span>
+      <span class="badge">Cron / scheduling</span>
+      <span class="badge">Persistent memory</span>
+      <span class="badge">Tool composition</span>
+      <span class="badge">TLS / crypto</span>
+    </td>
+    <td>ESP32 (C3, S3, C6) — $5 boards</td>
+    <td>
+      <div class="gh-stats">
+        <span class="star-count">★ 1.6k</span>
+        <span class="fork-count">⑂ 122</span>
+      </div>
+      <a class="gh-link" href="https://github.com/tnm/zclaw" target="_blank">tnm/zclaw</a>
+      <span class="metric-sm">MIT</span>
+    </td>
+  </tr>
+
+  <!-- ZeroClaw -->
+  <tr>
+    <td>
+      <div class="name-cell" style="color: var(--accent-orange);">ZeroClaw</div>
+      <div class="tag tag-rust">Rust</div>
+    </td>
+    <td><span class="metric">Rust</span><br><span class="metric-sm">Single binary</span></td>
+    <td>Security-first Rust agent runtime. Fast cold starts, trait-driven architecture for teams.</td>
+    <td>
+      <span class="metric highlight">3.4 MB</span> <span class="metric-sm">binary</span><br>
+      <span class="metric-sm">&lt;5 MB RAM, &lt;10 ms startup</span>
+    </td>
+    <td>22+ providers: OpenAI-compatible, Ollama, local models</td>
+    <td class="channels-list">Telegram, Discord, WhatsApp, multi-channel</td>
+    <td>
+      <span class="badge">Trait-based plugins</span>
+      <span class="badge">Sandbox controls</span>
+      <span class="badge">Encrypted secrets</span>
+      <span class="badge">Filesystem scoping</span>
+      <span class="badge">Observability</span>
+      <span class="badge">Edge / Raspberry Pi</span>
+    </td>
+    <td>ARM, x86, RISC-V, Raspberry Pi, VPS</td>
+    <td>
+      <div class="gh-stats">
+        <span class="star-count">★ 23.5k</span>
+        <span class="fork-count">⑂ 3k</span>
+      </div>
+      <a class="gh-link" href="https://github.com/zeroclaw-labs/zeroclaw" target="_blank">zeroclaw-labs/zeroclaw</a>
+      <span class="metric-sm">MIT + Apache-2.0</span>
+    </td>
+  </tr>
+
+  <!-- nanobot -->
+  <tr>
+    <td>
+      <div class="name-cell" style="color: var(--accent-green);">nanobot</div>
+      <div class="tag tag-py">Python</div>
+    </td>
+    <td><span class="metric">Python</span></td>
+    <td>Ultra-lightweight OpenClaw alternative. 99% smaller codebase, research-friendly.</td>
+    <td>
+      <span class="metric highlight">~4,000</span> <span class="metric-sm">lines</span><br>
+      <span class="metric-sm">~30s startup</span>
+    </td>
+    <td>11+: OpenRouter, Anthropic, OpenAI, DeepSeek, Gemini, Groq, Mistral, VolcEngine, custom endpoints</td>
+    <td class="channels-list">Telegram, Discord, Slack, WhatsApp, Email, QQ, DingTalk, Feishu, Matrix, LINE, WeChat</td>
+    <td>
+      <span class="badge">ClawHub skills</span>
+      <span class="badge">MCP support</span>
+      <span class="badge">Heartbeat</span>
+      <span class="badge">Subagents</span>
+      <span class="badge">Prompt caching</span>
+      <span class="badge">2-step provider add</span>
+    </td>
+    <td>Any machine with Python (incl. Raspberry Pi)</td>
+    <td>
+      <div class="gh-stats">
+        <span class="star-count">★ 29k</span>
+        <span class="fork-count">⑂ 4.7k</span>
+      </div>
+      <a class="gh-link" href="https://github.com/HKUDS/nanobot" target="_blank">HKUDS/nanobot</a>
+      <span class="metric-sm">MIT</span>
+    </td>
+  </tr>
+
+  <!-- NanoClaw -->
+  <tr>
+    <td>
+      <div class="name-cell" style="color: var(--accent-yellow);">NanoClaw</div>
+      <div class="tag tag-js">Node.js</div>
+    </td>
+    <td><span class="metric">Node.js</span><br><span class="metric-sm">Claude Agent SDK</span></td>
+    <td>Security-first alternative to OpenClaw. Container-isolated agents, AI-native setup via Claude Code.</td>
+    <td>
+      <span class="metric highlight">~3,900</span> <span class="metric-sm">lines / 15 files</span><br>
+      <span class="metric-sm">Fully auditable</span>
+    </td>
+    <td>Anthropic Claude (via Agent SDK)</td>
+    <td class="channels-list">WhatsApp, Telegram, Slack, Discord, Signal, Gmail</td>
+    <td>
+      <span class="badge">Container isolation</span>
+      <span class="badge">Agent Swarms</span>
+      <span class="badge">Scheduled jobs</span>
+      <span class="badge">Per-group memory</span>
+      <span class="badge">Fork-and-customize</span>
+      <span class="badge-warn">No config files</span>
+    </td>
+    <td>macOS (Apple Container) or Linux (Docker)</td>
+    <td>
+      <div class="gh-stats">
+        <span class="star-count">★ 19k</span>
+        <span class="fork-count">⑂ 3.1k</span>
+      </div>
+      <a class="gh-link" href="https://github.com/qwibitai/nanoclaw" target="_blank">qwibitai/nanoclaw</a>
+      <span class="metric-sm">MIT</span>
+    </td>
+  </tr>
+
+  <!-- PicoClaw -->
+  <tr>
+    <td>
+      <div class="name-cell" style="color: var(--accent-cyan);">PicoClaw</div>
+      <div class="tag tag-go">Go</div>
+    </td>
+    <td><span class="metric">Go</span><br><span class="metric-sm">Single binary</span></td>
+    <td>Ultra-lightweight Go agent for $10 hardware. 95% AI-generated codebase. Extreme portability.</td>
+    <td>
+      <span class="metric highlight">&lt;10 MB</span> <span class="metric-sm">RAM</span><br>
+      <span class="metric-sm">&lt;1s startup (0.6 GHz)</span>
+    </td>
+    <td>OpenRouter, Anthropic, OpenAI, DeepSeek, Groq, Zhipu, Gemini</td>
+    <td class="channels-list">Telegram, Discord, QQ, DingTalk, LINE, WeCom, Slack</td>
+    <td>
+      <span class="badge">RISC-V support</span>
+      <span class="badge">Cron scheduler</span>
+      <span class="badge">Skills</span>
+      <span class="badge">Voice (Whisper)</span>
+      <span class="badge">PicoLM companion</span>
+      <span class="badge">Self-evolving genes</span>
+    </td>
+    <td>RISC-V ($10), ARM, x86, old Android phones via Termux</td>
+    <td>
+      <div class="gh-stats">
+        <span class="star-count">★ 22k</span>
+        <span class="fork-count">⑂ 1.4k</span>
+      </div>
+      <a class="gh-link" href="https://github.com/sipeed/picoclaw" target="_blank">sipeed/picoclaw</a>
+      <span class="metric-sm">MIT</span>
+    </td>
+  </tr>
+
+  <!-- NullClaw -->
+  <tr>
+    <td>
+      <div class="name-cell" style="color: var(--accent-purple);">NullClaw</div>
+      <div class="tag tag-zig">Zig</div>
+    </td>
+    <td><span class="metric">Zig</span><br><span class="metric-sm">Static binary</span></td>
+    <td>Smallest full-stack agent. Zero runtime, zero VM. Vtable architecture for maximum extensibility.</td>
+    <td>
+      <span class="metric highlight">678 KB</span> <span class="metric-sm">binary</span><br>
+      <span class="metric-sm">~1 MB RAM, &lt;2 ms boot</span>
+    </td>
+    <td>23+ providers: OpenRouter, Anthropic, OpenAI, Ollama, DeepSeek, Groq, etc.</td>
+    <td class="channels-list">18: Telegram, Signal, Matrix, Discord, Slack, WhatsApp, Line, Lark, IRC, QQ, etc.</td>
+    <td>
+      <span class="badge">Vtable plugin system</span>
+      <span class="badge">ChaCha20 encryption</span>
+      <span class="badge">Multi-layer sandbox</span>
+      <span class="badge">Hybrid vector+FTS5 memory</span>
+      <span class="badge">Hardware peripherals</span>
+      <span class="badge">3,230+ tests</span>
+      <span class="badge">MCP</span>
+    </td>
+    <td>ARM, x86, RISC-V — $5 boards, Arduino, STM32, RPi</td>
+    <td>
+      <div class="gh-stats">
+        <span class="star-count">★ 2.1k</span>
+        <span class="fork-count">⑂ ~200</span>
+      </div>
+      <a class="gh-link" href="https://github.com/nullclaw/nullclaw" target="_blank">nullclaw/nullclaw</a>
+      <span class="metric-sm">MIT</span>
+    </td>
+  </tr>
+
+  <!-- DeerFlow -->
+  <tr>
+    <td>
+      <div class="name-cell" style="color: var(--accent-pink);">DeerFlow</div>
+      <div class="tag tag-py">Python</div>
+    </td>
+    <td><span class="metric">Python</span><br><span class="metric-sm">LangGraph + LangChain</span></td>
+    <td>ByteDance's SuperAgent harness. Deep research, code gen, content creation with sub-agent orchestration.</td>
+    <td>
+      <span class="metric-sm">Standard Python/Node.js runtime</span><br>
+      <span class="metric-sm">Docker sandbox</span>
+    </td>
+    <td>OpenAI, Anthropic, DeepSeek, Gemini, Doubao, any via LiteLLM</td>
+    <td class="channels-list">Web UI (built-in), API<br><span style="font-size:11px; color: var(--accent-orange);">No messaging platform channels</span></td>
+    <td>
+      <span class="badge-info">Sub-agent orchestration</span>
+      <span class="badge-info">Sandboxed execution</span>
+      <span class="badge-info">Persistent memory</span>
+      <span class="badge-info">Skill files (Markdown)</span>
+      <span class="badge-info">MCP integration</span>
+      <span class="badge-info">Slides / reports / dashboards</span>
+      <span class="badge-info">Human-in-the-loop</span>
+    </td>
+    <td>Server / cloud (Python 3.12+, Node.js 22+)</td>
+    <td>
+      <div class="gh-stats">
+        <span class="star-count">★ 24.6k</span>
+        <span class="fork-count">⑂ 2.9k</span>
+      </div>
+      <a class="gh-link" href="https://github.com/bytedance/deer-flow" target="_blank">bytedance/deer-flow</a>
+      <span class="metric-sm">MIT</span>
+    </td>
+  </tr>
+
+</tbody>
+</table>
+</div>
+
+<div class="footer">
+  <p>Sources: GitHub repos, official docs, MarkTechPost, Wikipedia · Data as of March 2026</p>
+</div>
+
+</body>
+</html>
