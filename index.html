@@ -556,7 +556,7 @@
 </div>
 
 <div class="table-wrap">
-<table>
+<table id="china-product-table">
 <thead>
   <tr>
     <th>Product</th>
@@ -568,7 +568,7 @@
   </tr>
 </thead>
 <tbody>
-  <tr>
+  <tr data-launch-sort="2026-02-01">
     <td>
       <div class="name-cell" style="color: var(--accent-blue);">KimiClaw</div>
       <div class="metric-sm">Moonshot AI</div>
@@ -579,7 +579,7 @@
     <td>Kimi K2.5 (top open-source performer)</td>
     <td><span class="gh-link">kimi.com</span></td>
   </tr>
-  <tr>
+  <tr data-launch-sort="2026-02-25">
     <td>
       <div class="name-cell" style="color: var(--accent-orange);">MaxClaw</div>
       <div class="metric-sm">MiniMax</div>
@@ -590,7 +590,7 @@
     <td>MiniMax M2.5 (MoE, frontier-level)</td>
     <td><span class="gh-link">agent.minimax.io</span></td>
   </tr>
-  <tr>
+  <tr data-launch-sort="2026-03-01">
     <td>
       <div class="name-cell" style="color: var(--accent-green);">CoPaw</div>
       <div class="metric-sm">Alibaba (AgentScope)</div>
@@ -601,7 +601,7 @@
     <td>Flexible (Qwen series; AgentScope)</td>
     <td><span class="gh-link">GitHub (Alibaba CoPaw)</span></td>
   </tr>
-  <tr>
+  <tr data-launch-sort="2026-03-06">
     <td>
       <div class="name-cell" style="color: var(--accent-red);">MiClaw</div>
       <div class="metric-sm">Xiaomi</div>
@@ -612,7 +612,7 @@
     <td>Xiaomi MiMo</td>
     <td><span class="gh-link">weibo.com (Xiaomi Tech)</span></td>
   </tr>
-  <tr>
+  <tr data-launch-sort="2026-03-09">
     <td>
       <div class="name-cell" style="color: var(--accent-purple);">ArkClaw</div>
       <div class="metric-sm">ByteDance (Volcano Engine)</div>
@@ -623,7 +623,7 @@
     <td>Doubao-Seed-2.0, Kimi, MiniMax, GLM</td>
     <td><span class="gh-link">volcengine.com</span></td>
   </tr>
-  <tr>
+  <tr data-launch-sort="2026-03-09">
     <td>
       <div class="name-cell" style="color: var(--accent-cyan);">WorkBuddy</div>
       <div class="metric-sm">Tencent (Cloud/CodeBuddy)</div>
@@ -634,7 +634,7 @@
     <td>Hunyuan, DeepSeek, GLM, Kimi, MiniMax</td>
     <td><span class="gh-link">codebuddy.cn/work</span></td>
   </tr>
-  <tr>
+  <tr data-launch-sort="2026-03-10">
     <td>
       <div class="name-cell" style="color: var(--accent-pink);">AutoClaw</div>
       <div class="metric-sm">Zhipu AI</div>
@@ -656,6 +656,14 @@
 
 <script>
   document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+  const chinaProductTableBody = document.querySelector('#china-product-table tbody');
+  if (chinaProductTableBody) {
+    const chinaRows = Array.from(chinaProductTableBody.querySelectorAll('tr'));
+    chinaRows
+      .sort((a, b) => a.dataset.launchSort.localeCompare(b.dataset.launchSort))
+      .forEach((row) => chinaProductTableBody.appendChild(row));
+  }
 </script>
 
 </body>
