@@ -216,6 +216,10 @@
     color: var(--text-muted);
     font-family: 'JetBrains Mono', monospace;
   }
+
+  .footer p + p {
+    margin-top: 6px;
+  }
 </style>
 </head>
 <body>
@@ -603,7 +607,12 @@
 
 <div class="footer">
   <p>Sources: GitHub repos, official docs, MarkTechPost, Wikipedia · Data as of March 2026</p>
+  <p>&copy; <span id="copyright-year"></span> Robert Zaufall</p>
 </div>
+
+<script>
+  document.getElementById('copyright-year').textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
