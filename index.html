@@ -197,6 +197,26 @@
     color: var(--accent-purple);
   }
 
+  .deploy-cloud {
+    background: rgba(77, 159, 255, 0.12);
+    color: var(--accent-blue);
+  }
+
+  .deploy-open {
+    background: rgba(61, 214, 140, 0.12);
+    color: var(--accent-green);
+  }
+
+  .deploy-mobile {
+    background: rgba(244, 114, 182, 0.12);
+    color: var(--accent-pink);
+  }
+
+  .deploy-desktop {
+    background: rgba(167, 139, 250, 0.12);
+    color: var(--accent-purple);
+  }
+
   .purpose {
     font-size: 12px;
     color: var(--text-muted);
@@ -574,10 +594,10 @@
       <div class="metric-sm">Moonshot AI</div>
     </td>
     <td><span class="metric">Feb 2026</span></td>
-    <td><span class="badge badge-info">Cloud-native (browser-based)</span></td>
+    <td><span class="badge deploy-cloud">Cloud-native (browser-based)</span></td>
     <td>Always-on browser tab; 5,000+ skills via ClawHub; 40GB cloud storage; 24/7 persistent memory; "Bring Your Own Claw" hybrid; multimodal &amp; long-context</td>
     <td>Kimi K2.5 (top open-source performer)</td>
-    <td><span class="gh-link">kimi.com</span></td>
+    <td><a class="gh-link" href="https://kimi.com" target="_blank">kimi.com</a></td>
   </tr>
   <tr data-launch-sort="2026-02-25">
     <td>
@@ -585,10 +605,10 @@
       <div class="metric-sm">MiniMax</div>
     </td>
     <td><span class="metric">Late Feb 2026</span></td>
-    <td><span class="badge badge-warn">Cloud-hosted SaaS (one-click deploy)</span></td>
+    <td><span class="badge deploy-cloud">Cloud-hosted SaaS (one-click deploy)</span></td>
     <td>Instant live agents; Telegram, Slack, WhatsApp, Discord integrations; 10,000+ expert agents; low-cost inference; mobile sync</td>
     <td>MiniMax M2.5 (MoE, frontier-level)</td>
-    <td><span class="gh-link">agent.minimax.io</span></td>
+    <td><a class="gh-link" href="https://agent.minimax.io" target="_blank">agent.minimax.io</a></td>
   </tr>
   <tr data-launch-sort="2026-03-01">
     <td>
@@ -596,10 +616,10 @@
       <div class="metric-sm">Alibaba (AgentScope)</div>
     </td>
     <td><span class="metric">Late Feb / Early Mar 2026</span></td>
-    <td><span class="badge">Open-source framework (local/cloud)</span></td>
+    <td><span class="badge deploy-open">Open-source framework (local/cloud)</span></td>
     <td>High-perf workstation; persistent memory (ReMe); multi-channel workflows; DingTalk, Lark, QQ, Discord, iMessage; Python custom skills</td>
     <td>Flexible (Qwen series; AgentScope)</td>
-    <td><span class="gh-link">GitHub (Alibaba CoPaw)</span></td>
+    <td><a class="gh-link" href="https://github.com/agentscope-ai/CoPaw" target="_blank">GitHub (Alibaba CoPaw)</a></td>
   </tr>
   <tr data-launch-sort="2026-03-06">
     <td>
@@ -607,10 +627,10 @@
       <div class="metric-sm">Xiaomi</div>
     </td>
     <td><span class="metric">Mar 6, 2026</span></td>
-    <td><span class="badge badge-info">Mobile/system-level (closed beta)</span></td>
+    <td><span class="badge deploy-mobile">Mobile/system-level (closed beta)</span></td>
     <td>System-level phone agent; 50+ system capabilities; personal context awareness; ecosystem coordination; self-evolution; initial Xiaomi 17-series support</td>
     <td>Xiaomi MiMo</td>
-    <td><span class="gh-link">weibo.com (Xiaomi Tech)</span></td>
+    <td><a class="gh-link" href="https://weibo.com/xiaomikeji" target="_blank">weibo.com (Xiaomi Tech)</a></td>
   </tr>
   <tr data-launch-sort="2026-03-09">
     <td>
@@ -618,10 +638,10 @@
       <div class="metric-sm">ByteDance (Volcano Engine)</div>
     </td>
     <td><span class="metric">Mar 9–10, 2026</span></td>
-    <td><span class="badge badge-info">Cloud SaaS (out-of-the-box)</span></td>
+    <td><span class="badge deploy-cloud">Cloud SaaS (out-of-the-box)</span></td>
     <td>Zero config; 24/7 always-on; deep Lark/Feishu plugin integration; complex task support</td>
     <td>Doubao-Seed-2.0, Kimi, MiniMax, GLM</td>
-    <td><span class="gh-link">volcengine.com</span></td>
+    <td><a class="gh-link" href="https://www.volcengine.com" target="_blank">volcengine.com</a></td>
   </tr>
   <tr data-launch-sort="2026-03-09">
     <td>
@@ -629,10 +649,21 @@
       <div class="metric-sm">Tencent (Cloud/CodeBuddy)</div>
     </td>
     <td><span class="metric">Mar 9–10, 2026</span></td>
-    <td><span class="badge" style="background: rgba(167, 139, 250, 0.1); color: var(--accent-purple);">Desktop/local (plug-and-play)</span></td>
+    <td><span class="badge deploy-desktop">Desktop/local (plug-and-play)</span></td>
     <td>Workplace-focused; enterprise security; 20+ skill packages; multi-model switch; WeCom, QQ, Lark, DingTalk</td>
     <td>Hunyuan, DeepSeek, GLM, Kimi, MiniMax</td>
-    <td><span class="gh-link">codebuddy.cn/work</span></td>
+    <td><a class="gh-link" href="https://codebuddy.cn/work" target="_blank">codebuddy.cn/work</a></td>
+  </tr>
+  <tr data-launch-sort="2026-03-09">
+    <td>
+      <div class="name-cell" style="color: var(--accent-yellow);">QClaw</div>
+      <div class="metric-sm">Tencent PC Manager</div>
+    </td>
+    <td><span class="metric">Mar 9–10, 2026</span></td>
+    <td><span class="badge deploy-desktop">Desktop/local (invite-only beta)</span></td>
+    <td>One-click setup; WeChat-linked remote control; 5,000+ skills via ClawHub/GitHub; persistent memory; local file, browser, and mail control</td>
+    <td>Built-in Chinese models; custom model switching</td>
+    <td><a class="gh-link" href="https://claw.guanjia.qq.com/" target="_blank">claw.guanjia.qq.com</a></td>
   </tr>
   <tr data-launch-sort="2026-03-10">
     <td>
@@ -640,17 +671,17 @@
       <div class="metric-sm">Zhipu AI</div>
     </td>
     <td><span class="metric">Mar 10, 2026</span></td>
-    <td><span class="badge" style="background: rgba(167, 139, 250, 0.1); color: var(--accent-purple);">Local one-click install</span></td>
+    <td><span class="badge deploy-desktop">Local one-click install</span></td>
     <td>Minute-level setup (Win/macOS); 50+ pre-installed skills; avoids data exposure; optimized for agent scenarios</td>
     <td>GLM (Pony-Alpha-2), DeepSeek, Kimi, MiniMax</td>
-    <td><span class="gh-link">zhipuai.cn</span></td>
+    <td><a class="gh-link" href="https://www.zhipuai.cn" target="_blank">zhipuai.cn</a></td>
   </tr>
 </tbody>
 </table>
 </div>
 
 <div class="footer">
-  <p>Sources: GitHub repos, official posts/docs, TechNode, CGTN, MarkTechPost, Wikipedia · Data as of March 2026</p>
+  <p>Sources: GitHub repos, official posts/docs, Caixin, Securities Times, TechNode, CGTN, MarkTechPost, Wikipedia · Data as of March 2026</p>
   <p>&copy; <span id="copyright-year"></span> Robert Zaufall</p>
 </div>
 
