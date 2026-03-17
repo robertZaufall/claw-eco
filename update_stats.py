@@ -196,6 +196,45 @@ def update_html(html: str, repos: dict[str, dict]) -> str:
         return full
 
     html = re.sub(r'<tr>.*?</tr>', replace_row, html, flags=re.DOTALL)
+
+    # Re-order rows in tables 1 and 2 by star count (descending)
+    html = sort_table_rows(html, repos)
+
+    return html
+
+
+def get_star_count(row: str, repos: dict[str, dict]) -> int:
+    """Extract the star count for a table row from the repos dict."""
+    link_m = re.search(r'github\.com/([^"]+)', row)
+    if not link_m:
+        return 0
+    slug = link_m.group(1).rstrip("/").lower()
+    stats = repos.get(slug)
+    return stats.get("stars", 0) if stats else 0
+
+
+def sort_table_rows(html: str, repos: dict[str, dict]) -> str:
+    """Sort <tr> rows by star count within the first two <tbody> sections."""
+
+    def sort_tbody(m: re.Match) -> str:
+        tbody_content = m.group(1)
+        # Extract all <tr>...</tr> blocks (with optional leading comments/whitespace)
+        row_pattern = r'(\s*(?:<!--[^>]*-->\s*)?<tr>.*?</tr>)'
+        rows = re.findall(row_pattern, tbody_content, flags=re.DOTALL)
+        if not rows:
+            return m.group(0)
+
+        # Sort by star count descending
+        rows.sort(key=lambda r: get_star_count(r, repos), reverse=True)
+
+        return "<tbody>\n" + "\n".join(rows) + "\n\n</tbody>"
+
+    # Apply to first two <tbody>...</tbody> blocks only (tables 1 and 2)
+    tbody_re = r'<tbody>(.*?)</tbody>'
+    matches = list(re.finditer(tbody_re, html, flags=re.DOTALL))
+    for match in reversed(matches[:2]):  # reversed to preserve offsets
+        html = html[:match.start()] + sort_tbody(match) + html[match.end():]
+
     return html
 
 
