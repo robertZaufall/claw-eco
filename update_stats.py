@@ -218,16 +218,17 @@ def sort_table_rows(html: str, repos: dict[str, dict]) -> str:
 
     def sort_tbody(m: re.Match) -> str:
         tbody_content = m.group(1)
-        # Extract all <tr>...</tr> blocks (with optional leading comments/whitespace)
-        row_pattern = r'(\s*(?:<!--[^>]*-->\s*)?<tr>.*?</tr>)'
+        # Extract all comment + <tr>...</tr> blocks
+        row_pattern = r'((?:\s*<!--[^>]*-->\s*)?<tr>.*?</tr>)'
         rows = re.findall(row_pattern, tbody_content, flags=re.DOTALL)
         if not rows:
             return m.group(0)
 
-        # Sort by star count descending
+        # Strip each row and sort by star count descending
+        rows = [r.strip() for r in rows]
         rows.sort(key=lambda r: get_star_count(r, repos), reverse=True)
 
-        return "<tbody>\n" + "\n".join(rows) + "\n\n</tbody>"
+        return "<tbody>\n\n  " + "\n\n  ".join(rows) + "\n\n</tbody>"
 
     # Apply to first two <tbody>...</tbody> blocks only (tables 1 and 2)
     tbody_re = r'<tbody>(.*?)</tbody>'
