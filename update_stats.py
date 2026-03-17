@@ -170,7 +170,7 @@ def update_html(html: str, repos: dict[str, dict]) -> str:
         commit_span_re = r'<span class="commit-count">[^<]*</span>'
         if stats.get("commits"):
             commits_str = fmt_number(stats["commits"])
-            new_commit = f'<span class="commit-count">{emoji} {commits_str} commits</span>'
+            new_commit = f'<span class="commit-count">⟳ {commits_str}</span>'
             if re.search(commit_span_re, full):
                 full = re.sub(commit_span_re, new_commit, full)
             else:
@@ -183,7 +183,7 @@ def update_html(html: str, repos: dict[str, dict]) -> str:
         # Add or update last-updated date
         updated_span_re = r'<span class="last-updated">[^<]*</span>'
         if stats.get("updated"):
-            new_updated = f'<span class="last-updated">📅 {stats["updated"]}</span>'
+            new_updated = f'<span class="last-updated">⏱ {stats["updated"]}</span>'
             if re.search(updated_span_re, full):
                 full = re.sub(updated_span_re, new_updated, full)
             else:
@@ -241,6 +241,18 @@ def ensure_css(html: str) -> str:
     return html
 
 
+def update_footer_date(html: str) -> str:
+    """Update the 'Last updated' date in the footer to today."""
+    from datetime import datetime
+    today = datetime.now().strftime("%B %d, %Y")
+    html = re.sub(
+        r'(<span id="last-updated-date">)[^<]*(</span>)',
+        rf'\g<1>{today}\2',
+        html,
+    )
+    return html
+
+
 def extract_repo_slugs(html: str) -> list[str]:
     """Pull all owner/repo slugs from gh-link hrefs."""
     return re.findall(r'class="gh-link"[^>]*href="https://github\.com/([^"]+)"', html)
@@ -274,20 +286,21 @@ def main():
         if len(parts) != 2:
             continue
         owner, repo = parts
-        print(f"📡 {owner}/{repo} …", end=" ", flush=True)
+        print(f"→ {owner}/{repo} …", end=" ", flush=True)
         stats = fetch_repo_stats(owner, repo)
         if stats:
             repos[slug_clean.lower()] = stats
             c = fmt_number(stats["commits"]) if stats.get("commits") else "?"
             upd = stats.get("updated", "?")
             print(f"★ {fmt_number(stats['stars'])}  ⑂ {fmt_number(stats['forks'])}  "
-                  f"{stats.get('emoji', '🦞')} {c} commits  📅 {upd}")
+                  f"⟳ {c}  ⏱ {upd}")
         else:
             print("SKIPPED (not found)")
 
     # Update HTML
     html = ensure_css(html)
     html = update_html(html, repos)
+    html = update_footer_date(html)
 
     with open(html_path, "w", encoding="utf-8") as f:
         f.write(html)
