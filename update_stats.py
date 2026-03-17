@@ -139,7 +139,7 @@ def fmt_number(n: int) -> str:
 def update_html(html: str, repos: dict[str, dict]) -> str:
     """Find each gh-stats block and update stars, forks, commits, and last updated."""
 
-    def replace_gh_block(m: re.Match) -> str:
+    def replace_row(m: re.Match) -> str:
         full = m.group(0)
         link_m = re.search(r'github\.com/([^"]+)', full)
         if not link_m:
@@ -151,7 +151,6 @@ def update_html(html: str, repos: dict[str, dict]) -> str:
 
         stars_str = fmt_number(stats["stars"])
         forks_str = fmt_number(stats["forks"])
-        emoji = stats.get("emoji", "🦞")
 
         # Replace star count
         full = re.sub(
@@ -187,17 +186,16 @@ def update_html(html: str, repos: dict[str, dict]) -> str:
             if re.search(updated_span_re, full):
                 full = re.sub(updated_span_re, new_updated, full)
             else:
-                # Insert after the gh-link line
+                # Insert after gh-stats div closing
                 full = re.sub(
-                    r'(class="gh-link"[^>]*>[^<]*</a>)',
-                    rf'\1\n      {new_updated}',
+                    r'(</div>\s*)(<span class="metric-sm">)',
+                    rf'\1{new_updated}\n      \2',
                     full,
                 )
 
         return full
 
-    pattern = r'<div class="gh-stats">.*?</td>'
-    html = re.sub(pattern, replace_gh_block, html, flags=re.DOTALL)
+    html = re.sub(r'<tr>.*?</tr>', replace_row, html, flags=re.DOTALL)
     return html
 
 
@@ -254,8 +252,17 @@ def update_footer_date(html: str) -> str:
 
 
 def extract_repo_slugs(html: str) -> list[str]:
-    """Pull all owner/repo slugs from gh-link hrefs."""
-    return re.findall(r'class="gh-link"[^>]*href="https://github\.com/([^"]+)"', html)
+    """Pull all owner/repo slugs from name-cell or gh-link hrefs."""
+    slugs = re.findall(r'href="https://github\.com/([^"]+)"', html)
+    # Deduplicate while preserving order
+    seen = set()
+    unique = []
+    for s in slugs:
+        s_clean = s.rstrip("/").lower()
+        if s_clean not in seen:
+            seen.add(s_clean)
+            unique.append(s.rstrip("/"))
+    return unique
 
 
 def main():
