@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Update GitHub Stats",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/update_stats.py",
+      "args": ["--file", "${workspaceFolder}/index.html"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    }
+  ]
+}
