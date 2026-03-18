@@ -280,12 +280,12 @@ def ensure_css(html: str) -> str:
 
 
 def update_footer_date(html: str) -> str:
-    """Update the 'Last updated' date in the footer to today."""
+    """Update the 'Last updated' date and time in the footer to now."""
     from datetime import datetime
-    today = datetime.now().strftime("%B %d, %Y")
+    now = datetime.now().strftime("%B %d, %Y %H:%M")
     html = re.sub(
         r'(<span id="last-updated-date">)[^<]*(</span>)',
-        rf'\g<1>{today}\2',
+        rf'\g<1>{now}\2',
         html,
     )
     return html
