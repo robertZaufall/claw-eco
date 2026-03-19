@@ -46,5 +46,5 @@ jobs:
 
   deploy:
     needs: update
-    if: needs.update.outputs.changed == 'true'
+    if: ${{ needs.update.outputs.changed == 'true' }}
     uses: ./.github/workflows/static.yml
