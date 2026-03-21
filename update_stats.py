@@ -1,18 +1,23 @@
 #!/usr/bin/env python3
 """
-Fetch live GitHub stats (stars, forks, commits, last update) and update index.html.
+Fetch live GitHub stats (stars, forks, commits, last update) and update HTML files.
 Tables 1 (frameworks) and 2 (harnesses) are updated in-place.
 
 Requirements: gh CLI (authenticated)
-Usage:       python3 update_stats.py [--file index.html]
+Usage:       python3 update_stats.py [--file index.html] [--file other.html]
 """
 
 import argparse
 import json
 import os
+from pathlib import Path
 import re
 import subprocess
 import sys
+from datetime import datetime
+
+
+FOOTER_TIMESTAMP_FORMAT = "%Y-%m-%d %H:%M"
 
 
 def gh_api(path: str) -> dict | list:
@@ -69,7 +74,6 @@ def fetch_repo_stats(owner: str, repo: str) -> dict:
     # Format pushed_at to "Mar 2026" style
     updated = ""
     if pushed_at:
-        from datetime import datetime
         dt = datetime.fromisoformat(pushed_at.replace("Z", "+00:00"))
         updated = dt.strftime("%b %d, %Y")
 
@@ -279,13 +283,18 @@ def ensure_css(html: str) -> str:
     return html
 
 
-def update_footer_date(html: str) -> str:
-    """Update the 'Last updated' date and time in the footer to now."""
-    from datetime import datetime
-    now = datetime.now().strftime("%B %d, %Y %H:%M")
+def format_footer_timestamp(now: datetime | None = None) -> str:
+    """Format the footer timestamp as YYYY-MM-DD HH:MM."""
+    if now is None:
+        now = datetime.now()
+    return now.strftime(FOOTER_TIMESTAMP_FORMAT)
+
+
+def update_footer_date(html: str, timestamp: str) -> str:
+    """Update the 'Last updated' date and time in the footer."""
     html = re.sub(
         r'(<span id="last-updated-date">)[^<]*(</span>)',
-        rf'\g<1>{now}\2',
+        rf'\g<1>{timestamp}\2',
         html,
     )
     return html
@@ -305,29 +314,87 @@ def extract_repo_slugs(html: str) -> list[str]:
     return unique
 
 
+def collect_html_paths(files: list[str] | None) -> list[Path]:
+    """Resolve HTML files from CLI args or default to all top-level HTML files."""
+    if files:
+        return [Path(file) for file in files]
+    return sorted(Path(".").glob("*.html"))
+
+
+def update_html_file(
+    html_path: Path,
+    html: str,
+    repos: dict[str, dict],
+    timestamp: str,
+    has_repo_links: bool,
+) -> bool:
+    """Update one HTML file and refresh its footer on every run."""
+    updated_html = html
+    if has_repo_links:
+        updated_html = ensure_css(updated_html)
+        updated_html = update_html(updated_html, repos)
+    updated_html = update_footer_date(updated_html, timestamp)
+
+    if updated_html == html:
+        return False
+
+    with open(html_path, "w", encoding="utf-8") as f:
+        f.write(updated_html)
+    return True
+
+
 def main():
-    parser = argparse.ArgumentParser(description="Update GitHub stats in index.html")
-    parser.add_argument("--file", default="index.html",
-                        help="Path to HTML file (default: index.html)")
+    parser = argparse.ArgumentParser(description="Update GitHub stats in HTML files")
+    parser.add_argument(
+        "--file",
+        action="append",
+        dest="files",
+        help="Path to an HTML file. Pass multiple times to update more than one file. Defaults to all *.html files.",
+    )
     args = parser.parse_args()
 
-    html_path = args.file
-    if not os.path.exists(html_path):
-        print(f"❌ File not found: {html_path}")
+    html_paths = collect_html_paths(args.files)
+    if not html_paths:
+        print("❌ No HTML files found.")
         sys.exit(1)
 
-    with open(html_path, "r", encoding="utf-8") as f:
-        html = f.read()
-
-    slugs = extract_repo_slugs(html)
-    if not slugs:
-        print("❌ No GitHub repo links found in the HTML.")
+    missing_paths = [str(path) for path in html_paths if not os.path.exists(path)]
+    if missing_paths:
+        print(f"❌ File not found: {missing_paths[0]}")
         sys.exit(1)
 
-    print(f"Found {len(slugs)} repos to update.\n")
+    html_inputs: list[tuple[Path, str, bool]] = []
+    all_slugs: list[str] = []
+
+    for html_path in html_paths:
+        with open(html_path, "r", encoding="utf-8") as f:
+            html = f.read()
+
+        slugs = extract_repo_slugs(html)
+        if not slugs:
+            print(f"→ {html_path} … footer only (no GitHub repo links found)")
+            html_inputs.append((html_path, html, False))
+            continue
+
+        html_inputs.append((html_path, html, True))
+        all_slugs.extend(slugs)
+
+    if not all_slugs:
+        print("No GitHub repo links found. Refreshing footer timestamps only.\n")
+
+    unique_slugs: list[str] = []
+    if all_slugs:
+        seen_slugs: set[str] = set()
+        for slug in all_slugs:
+            slug_clean = slug.rstrip("/").lower()
+            if slug_clean not in seen_slugs:
+                seen_slugs.add(slug_clean)
+                unique_slugs.append(slug.rstrip("/"))
+
+        print(f"Found {len(unique_slugs)} repos across {len(html_inputs)} HTML file(s).\n")
 
     repos: dict[str, dict] = {}
-    for slug in slugs:
+    for slug in unique_slugs:
         slug_clean = slug.rstrip("/")
         parts = slug_clean.split("/", 1)
         if len(parts) != 2:
@@ -344,15 +411,16 @@ def main():
         else:
             print("SKIPPED (not found)")
 
-    # Update HTML
-    html = ensure_css(html)
-    html = update_html(html, repos)
-    html = update_footer_date(html)
+    timestamp = format_footer_timestamp()
+    changed_files = 0
+    for html_path, html, has_repo_links in html_inputs:
+        if update_html_file(html_path, html, repos, timestamp, has_repo_links):
+            changed_files += 1
+            print(f"✅ Updated {html_path}")
+        else:
+            print(f"✓ No changes in {html_path}")
 
-    with open(html_path, "w", encoding="utf-8") as f:
-        f.write(html)
-
-    print(f"\n✅ Updated {len(repos)} repos in {html_path}")
+    print(f"\n✅ Updated {len(repos)} repos across {changed_files} HTML file(s)")
 
 
 if __name__ == "__main__":
