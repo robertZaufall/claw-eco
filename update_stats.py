@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """
-Fetch live GitHub stats (stars, forks, commits, last update) and update HTML files.
-Tables 1 (frameworks) and 2 (harnesses) are updated in-place.
+Fetch live GitHub stats (stars, forks, commits, language, last update) and update HTML files.
+Tables 1 (frameworks) and 2 (harnesses) are updated in-place, and the China tables
+can inherit missing language tags from linked GitHub repos.
 
 Requirements: gh CLI (authenticated)
 Usage:       python3 update_stats.py [--file index.html] [--file other.html]
 """
 
 import argparse
+from html import escape
 import json
 import os
 from pathlib import Path
@@ -18,6 +20,12 @@ from datetime import datetime
 
 
 FOOTER_TIMESTAMP_FORMAT = "%Y-%m-%d %H:%M"
+LANGUAGE_KEYWORDS_RE = re.compile(
+    r"\b(TypeScript|JavaScript|Node\.js|Python|Rust|Go|Golang|Zig|C\+\+|C#|C|"
+    r"Java|Kotlin|Swift|Shell|Bash|PHP|Ruby|Elixir|Scala)\b",
+    re.IGNORECASE,
+)
+CHINA_TABLE_IDS = ("china-product-table", "china-claw-extended-table")
 
 
 def gh_api(path: str) -> dict | list:
@@ -56,7 +64,7 @@ def get_commit_count(owner: str, repo: str) -> int | None:
 
 
 def fetch_repo_stats(owner: str, repo: str) -> dict:
-    """Return {stars, forks, commits, emoji, pushed_at} for one repo."""
+    """Return {stars, forks, commits, emoji, language, pushed_at} for one repo."""
     info = gh_api(f"repos/{owner}/{repo}")
     if not info or not isinstance(info, dict):
         return {}
@@ -64,11 +72,12 @@ def fetch_repo_stats(owner: str, repo: str) -> dict:
     stars = info.get("stargazers_count", 0)
     forks = info.get("forks_count", 0)
     pushed_at = info.get("pushed_at", "")  # ISO 8601: "2026-03-15T..."
+    primary_language = info.get("language") or ""
 
     commits = get_commit_count(owner, repo)
 
     topics = [t.lower() for t in (info.get("topics") or [])]
-    lang = (info.get("language") or "").lower()
+    lang = primary_language.lower()
     emoji = pick_emoji(topics, lang, info.get("description", ""))
 
     # Format pushed_at to "Mar 2026" style
@@ -82,6 +91,7 @@ def fetch_repo_stats(owner: str, repo: str) -> dict:
         "forks": forks,
         "commits": commits,
         "emoji": emoji,
+        "language": primary_language,
         "updated": updated,
     }
 
@@ -141,7 +151,7 @@ def fmt_number(n: int) -> str:
 
 
 def update_html(html: str, repos: dict[str, dict]) -> str:
-    """Find each gh-stats block and update stars, forks, commits, and last updated."""
+    """Refresh GitHub stats and enrich language tags where repo-backed rows need them."""
 
     def replace_row(m: re.Match) -> str:
         full = m.group(0)
@@ -200,6 +210,7 @@ def update_html(html: str, repos: dict[str, dict]) -> str:
         return full
 
     html = re.sub(r'<tr>.*?</tr>', replace_row, html, flags=re.DOTALL)
+    html = update_missing_language_tags(html, repos)
 
     # Re-order rows in tables 1 and 2 by star count (descending)
     html = sort_table_rows(html, repos)
@@ -243,13 +254,129 @@ def sort_table_rows(html: str, repos: dict[str, dict]) -> str:
     return html
 
 
+def normalize_language_tag(language: str) -> tuple[str, str] | None:
+    """Map a GitHub primary language to the existing badge palette."""
+    if not language:
+        return None
+
+    mapping = {
+        "typescript": ("TypeScript", "tag-ts"),
+        "javascript": ("JavaScript", "tag-js"),
+        "node.js": ("Node.js", "tag-js"),
+        "python": ("Python", "tag-py"),
+        "rust": ("Rust", "tag-rust"),
+        "go": ("Go", "tag-go"),
+        "golang": ("Go", "tag-go"),
+        "zig": ("Zig", "tag-zig"),
+        "c": ("C", "tag-c"),
+        "shell": ("Shell", "tag-shell"),
+        "bash": ("Shell", "tag-shell"),
+    }
+    normalized = mapping.get(language.strip().lower())
+    if normalized:
+        return normalized
+    return language.strip(), "tag-generic"
+
+
+def row_has_language_info(row: str) -> bool:
+    """Return True when the row already exposes a programming language."""
+    return bool(LANGUAGE_KEYWORDS_RE.search(row))
+
+
+def build_language_tag(language: str) -> str | None:
+    """Render a Table 1-style language tag for a repo primary language."""
+    normalized = normalize_language_tag(language)
+    if not normalized:
+        return None
+    label, class_name = normalized
+    return f'<div class="tag {class_name}">{escape(label)}</div>'
+
+
+def insert_language_tag_into_first_cell(row: str, tag_html: str) -> str:
+    """Insert a language tag into the first <td>, preserving any secondary label."""
+    first_cell_match = re.search(r'(<td\b[^>]*>)(.*?)(</td>)', row, flags=re.DOTALL)
+    if not first_cell_match:
+        return row
+
+    cell_open, cell_inner, cell_close = first_cell_match.groups()
+    if 'class="tag ' in cell_inner:
+        return row
+
+    secondary_match = re.search(r'(<span class="metric-sm">.*?</span>)\s*$', cell_inner, flags=re.DOTALL)
+    if secondary_match:
+        secondary = secondary_match.group(1)
+        secondary = re.sub(r'^<span([^>]*)>', r'<div\1>', secondary)
+        secondary = secondary.replace("</span>", "</div>")
+        cell_inner = (
+            cell_inner[:secondary_match.start()].rstrip()
+            + f"\n      {tag_html}\n      {secondary}\n    "
+        )
+    else:
+        cell_inner = cell_inner.rstrip() + f"\n      {tag_html}\n    "
+
+    start, end = first_cell_match.span()
+    return row[:start] + cell_open + cell_inner + cell_close + row[end:]
+
+
+def update_missing_language_tags(html: str, repos: dict[str, dict]) -> str:
+    """Fill Table 1-style language tags in the two China tables when a repo exposes one."""
+
+    def replace_row(m: re.Match) -> str:
+        row = m.group(0)
+        if 'class="tag ' in row or row_has_language_info(row):
+            return row
+
+        link_m = re.search(r'href="https://github\.com/([^"]+)"', row)
+        if not link_m:
+            return row
+
+        slug = link_m.group(1).rstrip("/").lower()
+        stats = repos.get(slug)
+        if not stats or not stats.get("language"):
+            return row
+
+        tag_html = build_language_tag(stats["language"])
+        if not tag_html:
+            return row
+        return insert_language_tag_into_first_cell(row, tag_html)
+
+    for table_id in CHINA_TABLE_IDS:
+        table_re = rf'(<table id="{re.escape(table_id)}"[^>]*>.*?<tbody>)(.*?)(</tbody>\s*</table>)'
+
+        def replace_table(m: re.Match) -> str:
+            tbody = re.sub(r'<tr\b[^>]*>.*?</tr>', replace_row, m.group(2), flags=re.DOTALL)
+            return m.group(1) + tbody + m.group(3)
+
+        html = re.sub(table_re, replace_table, html, flags=re.DOTALL)
+
+    return html
+
+
 def ensure_css(html: str) -> str:
-    """Add .commit-count and .last-updated CSS if not already present."""
+    """Add missing stat and language-tag CSS helpers if not already present."""
     style_block = ""
     if "<style>" in html:
         style_block = html.split("<style>")[1].split("</style>")[0]
 
     additions = ""
+    tag_additions = ""
+
+    if "tag-shell" not in style_block:
+        tag_additions += """
+  .tag-shell { background: rgba(244, 114, 182, 0.12); color: var(--accent-pink); }
+"""
+
+    if "tag-generic" not in style_block:
+        tag_additions += """
+  .tag-generic { background: rgba(139, 144, 160, 0.14); color: var(--text-muted); }
+"""
+
+    if tag_additions:
+        html = re.sub(
+            r'(\.tag-js\s*\{[^}]+\})',
+            rf'\1\n{tag_additions}',
+            html,
+        )
 
     if "commit-count" not in style_block:
         additions += """
