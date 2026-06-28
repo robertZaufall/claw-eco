@@ -209,7 +209,7 @@ def update_html(html: str, repos: dict[str, dict]) -> str:
 
         return full
 
-    html = re.sub(r'<tr>.*?</tr>', replace_row, html, flags=re.DOTALL)
+    html = re.sub(r'<tr\b[^>]*>.*?</tr>', replace_row, html, flags=re.DOTALL)
     html = update_missing_language_tags(html, repos)
 
     # Re-order rows in tables 1 and 2 by star count (descending)
