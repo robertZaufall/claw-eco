@@ -7,6 +7,7 @@ on:
     paths:
       - 'index.html'
       - 'favicon.svg'
+      - 'grok_bot.jpg'
   workflow_call:
   workflow_dispatch:
 
@@ -33,7 +34,7 @@ jobs:
       - name: Prepare deploy folder
         run: |
           mkdir _site
-          cp index.html favicon.svg _site/
+          cp index.html favicon.svg grok_bot.jpg _site/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
