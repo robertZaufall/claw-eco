@@ -588,7 +588,7 @@
       <span class="badge">Cron scheduler</span>
       <span class="badge">Subagents</span>
       <span class="badge">Docker / SSH / Modal backends</span>
-      <span class="badge">Windows app via OpenShell + MXC</span>
+      <span class="badge">Native Windows (CLI, gateway, TUI)</span>
       <span class="badge">108 contributors</span>
     </td>
     <td>Windows app, $5 VPS, GPU clusters, serverless (Daytona/Modal)</td>
@@ -646,13 +646,13 @@
       <div class="tag tag-py">Python</div>
     </td>
     <td><span class="metric">Python</span></td>
-    <td>Ultra-lightweight OpenClaw alternative. 99% smaller codebase, research-friendly.</td>
+    <td>Multi-channel OpenClaw alternative. Research-friendly Python agent with a broad chat gateway.</td>
     <td>
-      <span class="metric highlight">~4,000</span> <span class="metric-sm">lines</span><br>
-      <span class="metric-sm">~30s startup</span>
+      <span class="metric-sm">Python and TypeScript</span><br>
+      <span class="metric-sm">Gateway plus chat adapters</span>
     </td>
     <td>11+: OpenRouter, Anthropic, OpenAI, DeepSeek, Gemini, Groq, Mistral, VolcEngine, custom endpoints</td>
-    <td class="channels-list">Telegram, Discord, Slack, WhatsApp, Email, QQ, DingTalk, Feishu, Matrix, LINE, WeChat</td>
+    <td class="channels-list">Telegram, Discord, Slack, WhatsApp, Email, QQ, DingTalk, Feishu, Matrix, WeChat, Signal, WeCom, Teams, Mattermost, Linear</td>
     <td>
       <span class="badge">ClawHub skills</span>
       <span class="badge">MCP support</span>
@@ -718,8 +718,7 @@
     <td><span class="metric">Rust</span><br><span class="metric-sm">Single binary</span></td>
     <td>Security-first Rust agent runtime. Fast cold starts, trait-driven architecture for teams.</td>
     <td>
-      <span class="metric highlight">3.4 MB</span> <span class="metric-sm">binary</span><br>
-      <span class="metric-sm">&lt;5 MB RAM, &lt;10 ms startup</span>
+      <span class="metric highlight">~59 MB</span> <span class="metric-sm">linux musl binary</span>
     </td>
     <td>22+ providers: OpenAI-compatible, Ollama, local models</td>
     <td class="channels-list">Telegram, Discord, WhatsApp, multi-channel</td>
@@ -746,17 +745,17 @@
   <!-- NanoClaw -->
   <tr>
     <td>
-      <div class="name-cell" style="color: var(--accent-yellow);"><a href="https://github.com/qwibitai/nanoclaw" target="_blank" style="color: inherit; text-decoration: none;"><img src="https://github.com/qwibitai.png?size=32" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;border-radius:3px;">NanoClaw</a></div>
+      <div class="name-cell" style="color: var(--accent-yellow);"><a href="https://github.com/nanocoai/nanoclaw" target="_blank" style="color: inherit; text-decoration: none;"><img src="https://github.com/nanocoai.png?size=32" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;border-radius:3px;">NanoClaw</a></div>
       <div class="tag tag-js">Node.js</div>
     </td>
-    <td><span class="metric">Node.js</span><br><span class="metric-sm">Claude Agent SDK</span></td>
+    <td><span class="metric">Node.js</span><br><span class="metric-sm">Claude Agent SDK by default</span></td>
     <td>Security-first alternative to OpenClaw. Container-isolated agents, AI-native setup via Claude Code.</td>
     <td>
-      <span class="metric highlight">~3,900</span> <span class="metric-sm">lines / 15 files</span><br>
-      <span class="metric-sm">Fully auditable</span>
+      <span class="metric-sm">Docker-isolated agents</span><br>
+      <span class="metric-sm">Channels and providers added as skills</span>
     </td>
-    <td>Anthropic Claude (via Agent SDK)</td>
-    <td class="channels-list">WhatsApp, Telegram, Slack, Discord, Signal, Gmail</td>
+    <td>Claude Agent SDK by default; Codex, OpenCode, and Ollama via skills</td>
+    <td class="channels-list">WhatsApp, Telegram, Slack, Discord, Teams, iMessage, Matrix, Google Chat, Webex, Linear, GitHub, WeChat, email (Resend)</td>
     <td>
       <span class="badge">Container isolation</span>
       <span class="badge">Agent Swarms</span>
@@ -765,7 +764,7 @@
       <span class="badge">Fork-and-customize</span>
       <span class="badge-warn">No config files</span>
     </td>
-    <td>macOS (Apple Container) or Linux (Docker)</td>
+    <td>macOS, Linux, or WSL2 (Docker)</td>
     <td>
       <div class="gh-stats">
         <span class="star-count">★ 30.9k</span>
@@ -796,7 +795,6 @@
       <span class="badge">Cron scheduler</span>
       <span class="badge">Skills</span>
       <span class="badge">Voice (Whisper)</span>
-      <span class="badge">PicoLM companion</span>
       <span class="badge">Self-evolving genes</span>
     </td>
     <td>RISC-V ($10), ARM, x86, old Android phones via Termux</td>
@@ -849,9 +847,9 @@
   <tr>
     <td>
       <div class="name-cell" style="color: var(--accent-purple);"><a href="https://github.com/PrimeIntellect-ai/prime-agent" target="_blank" style="color: inherit; text-decoration: none;"><img src="https://github.com/PrimeIntellect-ai.png?size=32" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;border-radius:3px;">Prime Agent</a></div>
-      <div class="tag tag-ts">TypeScript</div>
+      <div class="tag tag-rust">Rust</div>
     </td>
-    <td><span class="metric">TypeScript</span><br><span class="metric-sm">Persistent Python / IPython runtime</span></td>
+    <td><span class="metric">Rust</span><br><span class="metric-sm">Persistent Python / IPython runtime</span></td>
     <td>Self-improving coding and research agent for general, long-running autonomous work. Uses recursive subagents and a continual harness that can refine durable memories, prompts, skills, and agent specifications.</td>
     <td>
       <span class="metric-sm">CLI + daemon-backed workers</span><br>
@@ -1026,7 +1024,7 @@
       <div class="tag tag-c">C</div>
     </td>
     <td><span class="metric">C</span><br><span class="metric-sm">ESP-IDF</span></td>
-    <td>Smallest OpenClaw-based agent for ESP32 microcontrollers. Extreme embedded footprint.</td>
+    <td>Smallest AI personal assistant for ESP32 microcontrollers. Extreme embedded footprint.</td>
     <td>
       <span class="metric highlight">888 KiB</span> <span class="metric-sm">all-in firmware</span><br>
       <span class="metric-sm">(~35 KB app code)</span>
@@ -1215,7 +1213,7 @@
     </td>
     <td><span class="metric-sm">NVIDIA</span></td>
     <td><span class="metric">TypeScript + Shell</span><br><span class="metric-sm">+ Python</span></td>
-    <td>OpenClaw (via NVIDIA OpenShell runtime)</td>
+    <td>OpenClaw, Hermes, and LangChain Deep Agents Code (via NVIDIA OpenShell)</td>
     <td>
       <span class="badge">Sandboxed execution (Landlock, seccomp)</span>
       <span class="badge">Network namespace isolation</span>
@@ -1238,7 +1236,7 @@
   <!-- OpenSandbox -->
   <tr>
     <td>
-      <div class="name-cell" style="color: var(--accent-cyan);"><a href="https://github.com/alibaba/OpenSandbox" target="_blank" style="color: inherit; text-decoration: none;"><img src="https://github.com/alibaba.png?size=32" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;border-radius:3px;">OpenSandbox</a></div>
+      <div class="name-cell" style="color: var(--accent-cyan);"><a href="https://github.com/opensandbox-group/OpenSandbox" target="_blank" style="color: inherit; text-decoration: none;"><img src="https://github.com/opensandbox-group.png?size=32" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;border-radius:3px;">OpenSandbox</a></div>
       <div class="tag tag-py">Python</div>
     </td>
     <td><span class="metric-sm">Alibaba</span></td>
@@ -1447,7 +1445,7 @@
       <div class="name-cell" style="color: var(--accent-blue);"><a href="https://github.com/openclaw/openclaw-windows-node" target="_blank" style="color: inherit; text-decoration: none;"><img src="https://github.com/openclaw.png?size=32" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;border-radius:3px;">OpenClaw Windows Hub</a></div>
       <div class="tag tag-generic">C#</div>
     </td>
-    <td><span class="metric-sm">OpenClaw / Microsoft</span></td>
+    <td><span class="metric-sm">OpenClaw</span></td>
     <td><span class="metric">C# + PowerShell</span><br><span class="metric-sm">WinUI 3 companion</span></td>
     <td>OpenClaw gateway and Windows node</td>
     <td>
@@ -1462,7 +1460,7 @@
     <td>
       <div class="gh-stats">
         <span class="star-count">★ 2.1k</span>
-        <span class="fork-count">⑂ 302</span>
+        <span class="fork-count">⑂ 303</span>
         <span class="commit-count">⟳ 1.4k</span>
       </div>
       <span class="last-updated">⏱ Oct 01, 2026</span>
@@ -1519,7 +1517,7 @@
       <div class="gh-stats">
         <span class="star-count">★ 1.4k</span>
         <span class="fork-count">⑂ 88</span>
-        <span class="commit-count">⟳ 432</span>
+        <span class="commit-count">⟳ 434</span>
       </div>
       <span class="last-updated">⏱ Oct 01, 2026</span>
       <span class="metric-sm">MIT</span>
@@ -1530,11 +1528,11 @@
   <tr>
     <td>
       <div class="name-cell" style="color: var(--accent-red);"><a href="https://github.com/prompt-security/clawsec" target="_blank" style="color: inherit; text-decoration: none;"><img src="https://github.com/prompt-security.png?size=32" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;border-radius:3px;">ClawSec</a></div>
-      <div class="tag tag-ts">TypeScript</div>
+      <div class="tag tag-js">JavaScript</div>
     </td>
-    <td><span class="metric-sm">Prompt Security</span></td>
-    <td><span class="metric">TypeScript</span><br><span class="metric-sm">+ Python utilities</span></td>
-    <td>OpenClaw, NanoClaw &amp; variants</td>
+    <td><span class="metric-sm">Prompt Security, from SentinelOne</span></td>
+    <td><span class="metric">JavaScript</span><br><span class="metric-sm">TypeScript + Python utilities</span></td>
+    <td>OpenClaw, NanoClaw, Hermes, PicoClaw</td>
     <td>
       <span class="badge">File integrity / drift detection</span>
       <span class="badge">NVD CVE advisory feed</span>
@@ -1550,7 +1548,7 @@
         <span class="commit-count">⟳ 281</span>
       </div>
       <span class="last-updated">⏱ Oct 01, 2026</span>
-      <span class="metric-sm">Open Source</span>
+      <span class="metric-sm">AGPL-3.0-or-later</span>
     </td>
   </tr>
 
@@ -1597,7 +1595,7 @@
     <td>
       <span class="badge">Individual $0/mo</span><br>
       <span class="badge-info">Google AI Pro</span> / <span class="badge-warn">Google AI Ultra</span><br>
-      <span class="metric-sm">Organization plan via Google Cloud · usage-based</span>
+      <span class="metric-sm">Google Cloud Business plan; Gemini Enterprise from $30/seat/mo</span>
     </td>
     <td><span class="badge deploy-desktop">Desktop app (macOS, Windows, Linux)</span></td>
   </tr>
@@ -1639,7 +1637,7 @@
       <span class="badge-warn">Max 5x $100/mo</span><br>
       <span class="badge-warn">Max 20x $200/mo</span>
     </td>
-    <td><span class="badge deploy-cloud">Cloud (claude.ai)</span></td>
+    <td><span class="badge deploy-desktop">Desktop (macOS, Windows, Linux, ChromeOS); web &amp; mobile beta</span></td>
   </tr>
 
   <!-- Claude Tag -->
@@ -1702,7 +1700,8 @@
     <td>
       <span class="badge-info">Copilot $30/user/mo</span><br>
       <span class="badge-warn">E7 Suite $99/user/mo</span><br>
-      <span class="metric-sm">Agent 365 $15/user/mo</span>
+      <span class="metric-sm">Agent 365 $15/user/mo</span><br>
+      <span class="metric-sm">Cowork tasks billed in Copilot Credits ($0.01 each)</span>
     </td>
     <td><span class="badge deploy-cloud">Cloud (M365 + third-party plugins)</span></td>
   </tr>
@@ -1716,12 +1715,13 @@
     <td>
       <span class="badge">AI software engineer</span>
       <span class="badge">Code, debug &amp; deploy</span>
-      <span class="badge">ACU-based compute</span>
-      <span class="badge">API access (Teams)</span>
+      <span class="badge">Desktop, CLI &amp; cloud agents</span>
+      <span class="badge">Included quota; extra usage at API pricing</span>
     </td>
     <td>
-      <span class="badge-info">Core $20/mo</span> + $2.25/ACU<br>
-      <span class="badge-warn">Teams $500/mo</span> 250 ACUs incl.<br>
+      <span class="badge">Free $0</span> / <span class="badge-info">Pro $20/mo</span><br>
+      <span class="badge-warn">Max $200/mo</span><br>
+      <span class="metric-sm">Teams $80/mo + $40/mo per full dev seat</span><br>
       <span class="metric-sm">Enterprise: custom</span>
     </td>
     <td><span class="badge deploy-cloud">Cloud SaaS</span></td>
@@ -1730,7 +1730,7 @@
   <!-- DockClaw -->
   <tr>
     <td>
-      <div class="name-cell" style="color: var(--accent-pink);"><a href="https://dockclaw.com/" target="_blank" style="color: inherit; text-decoration: none;">DockClaw</a></div>
+      <div class="name-cell" style="color: var(--accent-pink);"><a href="https://www.dockclaw.com/" target="_blank" style="color: inherit; text-decoration: none;">DockClaw</a></div>
     </td>
     <td><img src="https://www.google.com/s2/favicons?domain=dockclaw.com&sz=32" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;border-radius:3px;"><span class="metric-sm">DockClaw</span></td>
     <td>
@@ -1741,8 +1741,7 @@
       <span class="badge">No DevOps required</span>
     </td>
     <td>
-      <span class="badge-info">Starting at $19.99/mo</span><br>
-      <span class="metric-sm">7-day free trial</span>
+      <span class="badge-info">Starting at $19.99/mo</span>
     </td>
     <td><span class="badge deploy-cloud">Cloud SaaS</span></td>
   </tr>
@@ -1787,9 +1786,9 @@
       <span class="badge">Real software interfaces</span>
     </td>
     <td>
-      <span class="badge">Free</span> 100–200 daily credits<br>
-      <span class="badge-info">Plus $24.99/mo</span><br>
-      <span class="badge-warn">Pro $249.99/mo</span>
+      <span class="badge-info">Plus from $24.99/mo</span><br>
+      <span class="badge-warn">Pro from $249.99/mo</span><br>
+      <span class="metric-sm">Cloud computer subscription also required</span>
     </td>
     <td><span class="badge deploy-cloud">Cloud (dedicated instance)</span></td>
   </tr>
@@ -1801,19 +1800,17 @@
     </td>
     <td><img src="https://www.google.com/s2/favicons?domain=google.com&sz=32" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;border-radius:3px;"><span class="metric-sm">Google</span></td>
     <td>
-      <span class="badge">Announced at Google I/O 2026</span>
       <span class="badge">24/7 cloud agent</span>
       <span class="badge">Background task execution</span>
       <span class="badge">Gmail / Chat integration</span>
-      <span class="badge">Proactive daily briefs</span>
       <span class="badge">High-stakes approvals</span>
     </td>
     <td>
-      <span class="badge">Rolling out to Google AI Ultra (US)</span><br>
-      <span class="badge-warn">AI Ultra $249.99/mo</span><br>
-      <span class="metric-sm">Beta / expanding access</span>
+      <span class="badge">Google AI Pro and Ultra</span><br>
+      <span class="badge-warn">US Ultra $100/mo and $200/mo</span><br>
+      <span class="metric-sm">160+ countries; not in the EEA, UK, Switzerland, or Nigeria</span>
     </td>
-    <td><span class="badge deploy-cloud">Cloud (Gemini app / Chrome)</span></td>
+    <td><span class="badge deploy-cloud">Cloud (Gemini app, Chrome, Mac)</span></td>
   </tr>
 
   <!-- Grok Bot -->
@@ -1841,27 +1838,6 @@
     <td><span class="badge deploy-cloud">Cloud agent (desktop &amp; mobile)</span></td>
   </tr>
 
-  <!-- KiloClaw -->
-  <tr>
-    <td>
-      <div class="name-cell" style="color: var(--accent-green);"><a href="https://kilo.ai/kiloclaw" target="_blank" style="color: inherit; text-decoration: none;">KiloClaw</a></div>
-    </td>
-    <td><img src="https://www.google.com/s2/favicons?domain=kilo.ai&sz=32" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;border-radius:3px;"><span class="metric-sm">Kilo</span></td>
-    <td>
-      <span class="badge">Managed OpenClaw hosting</span>
-      <span class="badge">500+ AI models (Kilo Gateway)</span>
-      <span class="badge">Multi-platform (Telegram, Discord, Slack)</span>
-      <span class="badge">Scheduled tasks &amp; cron jobs</span>
-      <span class="badge">Enterprise security (SSO, audit logs)</span>
-    </td>
-    <td>
-      <span class="badge-info">Commit ~$51/mo</span> (6-month)<br>
-      <span class="badge-warn">Standard $55/mo</span><br>
-      <span class="metric-sm">AI inference at-cost, zero markup (Kilo Gateway, 500+ models)</span>
-    </td>
-    <td><span class="badge deploy-cloud">Cloud (one-click deploy)</span></td>
-  </tr>
-
   <!-- Lindy AI -->
   <tr>
     <td>
@@ -1876,9 +1852,9 @@
       <span class="badge">Credit-based per action</span>
     </td>
     <td>
-      <span class="badge">Free</span> 400 credits/mo<br>
-      <span class="badge-info">Pro $49.99/mo</span> 5,000 credits<br>
-      <span class="metric-sm">Enterprise: contact sales</span>
+      <span class="badge-info">Plus $29.99/user/mo</span> 3,000 credits<br>
+      <span class="badge-warn">Pro $99.99</span> / <span class="badge-warn">Max $199.99</span><br>
+      <span class="metric-sm">15,000 / 35,000 credits · Enterprise via sales</span>
     </td>
     <td><span class="badge deploy-cloud">Cloud SaaS</span></td>
   </tr>
@@ -1900,7 +1876,8 @@
       <span class="badge">Free tier</span><br>
       <span class="badge-info">Pro from $20/mo</span><br>
       <span class="badge-warn">Higher tiers up to $200/mo</span><br>
-      <span class="badge">Team / Enterprise custom</span>
+      <span class="badge">Team from $20/seat/mo</span><br>
+      <span class="metric-sm">Enterprise custom · annual billing 17% off</span>
     </td>
     <td><span class="badge deploy-cloud">Cloud SaaS</span></td>
   </tr>
@@ -1938,7 +1915,7 @@
     <td><img src="https://www.google.com/s2/favicons?domain=microsoft.com&sz=32" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;border-radius:3px;"><span class="metric-sm">Microsoft</span></td>
     <td>
       <span class="badge">Previously Scout</span>
-      <span class="badge">Private preview (end Sep 2026)</span>
+      <span class="badge">Private preview</span>
       <span class="badge">Persistent agent (name, role &amp; goal)</span>
       <span class="badge">Works without a new prompt</span>
       <span class="badge">Own identity, memory, computer &amp; workspace</span>
@@ -1970,9 +1947,10 @@
       <span class="badge">Coding &amp; app building</span>
     </td>
     <td>
-      <span class="badge">Free tier</span><br>
-      <span class="badge-info">Standard $19/mo</span><br>
-      <span class="metric-sm">Multi-model access included</span>
+      <span class="badge">Free $0</span><br>
+      <span class="badge-info">Pro $25/mo</span> billed annually<br>
+      <span class="badge-warn">Business $50/mo</span> billed annually<br>
+      <span class="metric-sm">Enterprise custom · annual billing is 2 months free</span>
     </td>
     <td><span class="badge deploy-cloud">Cloud SaaS</span></td>
   </tr>
@@ -1994,7 +1972,7 @@
     <td>
       <span class="badge">Free $0</span> / <span class="badge-info">Go $8/mo</span><br>
       <span class="badge-info">Plus $20/mo</span><br>
-      <span class="badge-warn">Pro 5x $100/mo</span> / <span class="badge-warn">Pro 20x $200/mo</span><br>
+      <span class="badge-warn">Pro $100 / $200 / $500 per month</span><br>
       <span class="metric-sm">Work + Codex share plan usage / credits</span>
     </td>
     <td><span class="badge deploy-cloud">Cloud + desktop / CLI / IDE / mobile</span></td>
@@ -2003,7 +1981,7 @@
   <!-- PokeeClaw -->
   <tr>
     <td>
-      <div class="name-cell" style="color: var(--accent-purple);"><a href="https://pokee.ai/pokeeclaw" target="_blank" style="color: inherit; text-decoration: none;">PokeeClaw</a></div>
+      <div class="name-cell" style="color: var(--accent-purple);"><a href="https://pokee.ai/" target="_blank" style="color: inherit; text-decoration: none;">PokeeClaw</a></div>
     </td>
     <td><img src="https://www.google.com/s2/favicons?domain=pokee.ai&sz=32" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;border-radius:3px;"><span class="metric-sm">Pokee AI</span></td>
     <td>
@@ -2014,9 +1992,9 @@
       <span class="badge">Secure sandbox deployment</span>
     </td>
     <td>
-      <span class="badge-info">Starting at $19.99</span><br>
-      <span class="metric-sm">Credit-based usage</span><br>
-      <span class="metric-sm">Enterprise demo / custom</span>
+      <span class="badge">Free</span> / <span class="badge-info">Lite $19.99/mo</span><br>
+      <span class="metric-sm">Pro $49.99 · Ultra $199.99</span><br>
+      <span class="metric-sm">Enterprise Team from $2,000/mo</span>
     </td>
     <td><span class="badge deploy-cloud">Cloud (24/7 secure sandbox)</span></td>
   </tr>
@@ -2028,7 +2006,7 @@
     </td>
     <td><img src="https://www.google.com/s2/favicons?domain=perplexity.ai&sz=32" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;border-radius:3px;"><span class="metric-sm">Perplexity AI</span></td>
     <td>
-      <span class="badge">19 models orchestrated</span>
+      <span class="badge">20+ models orchestrated</span>
       <span class="badge">Autonomous research</span>
       <span class="badge">Content creation</span>
       <span class="badge">App development</span>
@@ -2039,7 +2017,7 @@
       <span class="metric-sm">10,000 credits/mo included</span><br>
       <span class="metric-sm">Heavy use ~$300–500/mo</span>
     </td>
-    <td><span class="badge deploy-cloud">Cloud (Perplexity Max tier)</span></td>
+    <td><span class="badge deploy-cloud">Web, iOS &amp; Android (Pro and Max); also on your computer</span></td>
   </tr>
 
   <!-- PetClaw -->
@@ -2064,13 +2042,14 @@
     <td><span class="badge deploy-desktop">Desktop local (macOS, Windows beta)</span></td>
   </tr>
 
-  <!-- Msty Claw -->
+  <!-- Msty Go (ex-Msty Claw) -->
   <tr>
     <td>
-      <div class="name-cell" style="color: var(--accent-cyan);"><a href="https://msty.ai/claw" target="_blank" style="color: inherit; text-decoration: none;">Msty Claw</a></div>
+      <div class="name-cell" style="color: var(--accent-cyan);"><a href="https://msty.ai/products/go/" target="_blank" style="color: inherit; text-decoration: none;">Msty Go</a></div>
     </td>
-    <td><img src="https://www.google.com/s2/favicons?domain=msty.ai&sz=32" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;border-radius:3px;"><span class="metric-sm">Msty AI</span></td>
+    <td><img src="https://www.google.com/s2/favicons?domain=msty.ai&sz=32" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;border-radius:3px;"><span class="metric-sm">Msty</span></td>
     <td>
+      <span class="badge">Previously Msty Claw</span>
       <span class="badge">Autonomous multi-step tasks</span>
       <span class="badge">Sandboxed tools &amp; folder access</span>
       <span class="badge">Local or cloud models</span>
@@ -2079,8 +2058,8 @@
       <span class="badge">Scheduled tasks &amp; Playbooks</span>
     </td>
     <td>
-      <span class="badge">Free</span> (personal, beta)<br>
-      <span class="metric-sm">Teams &amp; Enterprise coming soon</span>
+      <span class="badge">Free for personal use</span><br>
+      <span class="metric-sm">Pro, Teams &amp; Enterprise not publicly priced</span>
     </td>
     <td><span class="badge deploy-desktop">Desktop local (macOS, Windows, Linux)</span></td>
   </tr>
@@ -2100,8 +2079,8 @@
       <span class="badge">24/7 expert support</span>
     </td>
     <td>
-      <span class="badge-info">From $24/mo</span><br>
-      <span class="metric-sm">14-day money-back guarantee</span><br>
+      <span class="badge-info">From $9.99/mo</span><br>
+      <span class="metric-sm">Intro rate; 6 GB renews at $19.99/mo</span><br>
       <span class="metric-sm">Server included</span>
     </td>
     <td><span class="badge deploy-cloud">Cloud (fully managed hosted instance)</span></td>
@@ -2186,19 +2165,19 @@
   </tr>
   <tr data-launch-sort="2026-02-25">
     <td>
-      <div class="name-cell" style="color: var(--accent-orange);"><a href="https://agent.minimax.io/" target="_blank" style="color: inherit; text-decoration: none;">MaxClaw</a></div>
+      <div class="name-cell" style="color: var(--accent-orange);"><a href="https://agent.minimaxi.com/activity/max-claw" target="_blank" style="color: inherit; text-decoration: none;">MaxClaw</a></div>
     </td>
     <td><img src="https://www.google.com/s2/favicons?domain=minimax.io&sz=32" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;border-radius:3px;"><span class="metric-sm">MiniMax</span></td>
     <td><span class="metric">Feb 25, 2026</span></td>
     <td><span class="badge deploy-cloud">Cloud-hosted SaaS (one-click deploy)</span></td>
     <td>
       <span class="badge">Deploy in ~10 seconds</span>
-      <span class="badge">Telegram, Slack, WhatsApp, Discord</span>
-      <span class="badge">Persistent memory + evolving skills</span>
-      <span class="badge">OpenClaw skill ecosystem</span>
-      <span class="badge">Low-cost inference (M2.5)</span>
+      <span class="badge">Feishu, DingTalk &amp; WeCom</span>
+      <span class="badge">50 GB cloud workspace</span>
+      <span class="badge">Web and mobile</span>
+      <span class="badge">Driven by MiniMax M2.7</span>
     </td>
-    <td><span class="metric">MiniMax M2.5</span><br><span class="metric-sm">(229B MoE, ~10B active/token)</span></td>
+    <td><span class="metric">MiniMax M2.7</span></td>
     <td>
       <span class="metric-sm">Proprietary</span>
     </td>
@@ -2270,12 +2249,12 @@
     </td>
     <td><img src="https://www.google.com/s2/favicons?domain=tencent.com&sz=32" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;border-radius:3px;"><span class="metric-sm">Tencent PC Manager</span></td>
     <td><span class="metric">Mar 9–10, 2026</span></td>
-    <td><span class="badge deploy-desktop">Desktop/local (public beta)</span></td>
+    <td><span class="badge deploy-desktop">Desktop; existing users until 24 Dec 2026</span></td>
     <td>
-      <span class="badge">One-click setup</span>
+      <span class="badge-warn">Stops 24 Dec 2026</span>
+      <span class="badge">New signups and renewals closed</span>
+      <span class="badge">Migrate to WorkBuddy</span>
       <span class="badge">WeChat remote control</span>
-      <span class="badge">5,000+ skills (ClawHub/GitHub)</span>
-      <span class="badge">Persistent memory</span>
       <span class="badge">Local file, browser &amp; mail</span>
     </td>
     <td>Built-in Chinese models; custom model switching</td>
@@ -2309,7 +2288,7 @@
     </td>
     <td><img src="https://www.google.com/s2/favicons?domain=dingtalk.com&sz=32" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:6px;border-radius:3px;"><span class="metric-sm">Alibaba (DingTalk / Wukong BU)</span></td>
     <td><span class="metric">Mar 17, 2026</span></td>
-    <td><span class="badge deploy-cloud">Invitation-only beta; desktop + DingTalk</span></td>
+    <td><span class="badge deploy-desktop">Desktop (macOS and Windows) + DingTalk</span></td>
     <td>
       <span class="badge">Enterprise agentic work platform</span>
       <span class="badge">DingTalk CLI/API integration</span>
@@ -2381,13 +2360,13 @@
   </tr>
   <tr data-launch-sort="2026-03-13">
     <td>
-      <div class="name-cell" style="color:var(--accent-cyan)"><a href="https://cn.aliyun.com/product/jvs" target="_blank">JVS Claw</a></div>
-      <span class="metric-sm">JVS 智能体套件</span>
+      <div class="name-cell" style="color:var(--accent-cyan)"><a href="https://help.aliyun.com/zh/jvs/product-overview/what-is-jvs-claw" target="_blank">JVS Claw</a></div>
+      <span class="metric-sm">无影 Agent 专属云电脑</span>
     </td>
     <td><span class="company-cell"><span class="ico-slot"><img src="https://www.google.com/s2/favicons?domain=alibaba.com&sz=32" class="ico"></span><span class="metric-sm">Alibaba Cloud</span></span></td>
     <td><span class="metric">Mar 13, 2026</span></td>
-    <td><span class="badge deploy-cloud">Enterprise managed suite; iOS/Android app</span></td>
-    <td><span class="badge">Visual agent builder</span><span class="badge">REST API integration</span><span class="badge">Long-term memory</span><span class="badge">Multi-tenant security</span><span class="badge">Skill marketplace</span></td>
+    <td><span class="badge deploy-cloud">Cloud or local (Windows, macOS, iOS, Android)</span></td>
+    <td><span class="badge">Isolated CloudSpace</span><span class="badge">Natural-language task execution</span><span class="badge">Built-in and custom skills</span><span class="badge">Subscription plus points</span></td>
     <td><span class="metric-sm">Qwen; flexible</span></td>
     <td><span class="metric-sm">Proprietary</span></td>
   </tr>
@@ -2453,7 +2432,7 @@
     <td><span class="metric-sm">Proprietary</span></td>
   </tr>
   <tr>
-    <td><div class="name-cell" style="color:var(--accent-blue)"><a href="https://qoder.com/qoderwork" target="_blank">QoderWork</a></div></td>
+    <td><div class="name-cell" style="color:var(--accent-blue)"><a href="https://docs.qoder.com/release-notes/qoderwork" target="_blank">QoderWork</a></div></td>
     <td><span class="company-cell"><span class="ico-slot"><img src="https://www.google.com/s2/favicons?domain=alibaba.com&sz=32" class="ico"></span><span class="metric-sm">Alibaba (Qoder/Tongyi)</span></span></td>
     <td><span class="metric">Jan 30, 2026</span></td>
     <td><span class="badge deploy-desktop">Desktop local (macOS, Windows 10+)</span></td>
@@ -2493,7 +2472,7 @@
     <td><span class="company-cell"><span class="ico-slot"><img src="https://www.google.com/s2/favicons?domain=baidu.com&sz=32" class="ico"></span><span class="metric-sm">Baidu AI Cloud</span></span></td>
     <td><span class="metric">Mar 11, 2026</span></td>
     <td><span class="badge deploy-cloud">Cloud SaaS (zero-deploy, browser)</span></td>
-    <td><span class="badge">Zero-deployment OpenClaw</span><span class="badge">Baidu Search/Baike/Scholar</span><span class="badge">WeCom/Feishu/DingTalk/WeChat</span><span class="badge">From ¥9.9 first month</span><span class="badge">7×24 scheduled tasks</span></td>
+    <td><span class="badge">Zero-deployment OpenClaw</span><span class="badge">Baidu Search/Baike/Scholar</span><span class="badge">WeCom/Feishu/DingTalk/WeChat</span><span class="badge">¥40 first month</span><span class="badge">7×24 scheduled tasks</span></td>
     <td><span class="metric">GLM-5</span><br><span class="metric-sm">MiniMax-M2.5; multi-model</span></td>
     <td><span class="metric-sm">Proprietary</span></td>
   </tr>
@@ -2510,8 +2489,8 @@
     <td><div class="name-cell" style="color:var(--accent-blue)"><a href="https://boclaw.ai/" target="_blank">BoClaw</a></div></td>
     <td><span class="company-cell"><span class="ico-slot"></span><span class="metric-sm">BoCloud (博云)</span></span></td>
     <td><span class="metric">Mar 2026</span></td>
-    <td><span class="badge deploy-cloud">Cloud-native (K8s/Docker)</span></td>
-    <td><span class="badge">Enterprise agent infra</span><span class="badge">Container orchestration</span><span class="badge">Compliance features</span></td>
+    <td><span class="badge deploy-desktop">Desktop + web (macOS, Windows, Linux)</span></td>
+    <td><span class="badge">Local-first personal agent</span><span class="badge">36 built-in skills</span><span class="badge">IM remote control</span><span class="badge">Scheduled tasks</span><span class="badge">Private deployment</span></td>
     <td><span class="metric-sm">Multi-model</span></td>
     <td><span class="metric-sm">Proprietary</span></td>
   </tr>
@@ -2543,11 +2522,11 @@
     <td><span class="metric-sm">Proprietary</span></td>
   </tr>
   <tr>
-    <td><div class="name-cell" style="color:var(--accent-red)"><a href="https://consumer.huawei.com/cn/mobileservices/celia/" target="_blank">Celia Claw</a></div><span class="metric-sm">小艺 Claw</span></td>
-    <td><span class="company-cell"><span class="ico-slot"><img src="https://www.google.com/s2/favicons?domain=huawei.com&sz=32" class="ico"></span><span class="metric-sm">Huawei (HarmonyOS)</span></span></td>
+    <td><div class="name-cell" style="color:var(--accent-red)"><a href="https://xiaoyi.huawei.com/work" target="_blank">Xiaoyi Work</a></div><span class="metric-sm">小艺 Work</span></td>
+    <td><span class="company-cell"><span class="ico-slot"><img src="https://www.google.com/s2/favicons?domain=huawei.com&sz=32" class="ico"></span><span class="metric-sm">Huawei</span></span></td>
     <td><span class="metric">Mar 11, 2026</span></td>
-    <td><span class="badge deploy-mobile">Mobile / system-level (HarmonyOS, closed beta)</span></td>
-    <td><span class="badge">HarmonyOS native integration</span><span class="badge">Multi-device sync</span><span class="badge">Personality presets w/ skills</span><span class="badge">Docs, PPT, email automation</span><span class="badge">CEO He Gang demo'd</span></td>
+    <td><span class="badge deploy-desktop">Desktop and mobile; cloud PC or local</span></td>
+    <td><span class="badge">Previously Celia Claw</span><span class="badge">Office, code, and design</span><span class="badge">Plans tasks and delivers files</span><span class="badge">Phone, tablet, and PC</span><span class="badge">HarmonyOS version by signup</span></td>
     <td><span class="metric-sm">Huawei Pangu; OpenClaw mode</span></td>
     <td><span class="metric-sm">Proprietary</span></td>
   </tr>
@@ -2569,7 +2548,7 @@
     <span style="margin: 0 4px;">·</span>
     <a class="gh-link" href="https://aijustbetter.com/collection/openclaw-alternatives-and-ecosystem-tools" target="_blank" style="display: inline;">aijustbetter.com</a>
   </p>
-  <p style="text-align: center;">&copy; <span id="copyright-year"></span> Robert Zaufall · Last updated: <span id="last-updated-date">2026-10-02 00:46</span></p>
+  <p style="text-align: center;">&copy; <span id="copyright-year"></span> Robert Zaufall · Last updated: <span id="last-updated-date">2026-10-02 01:20</span></p>
 </div>
 
 <script>
