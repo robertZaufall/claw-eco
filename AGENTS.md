@@ -2,6 +2,10 @@
 
 This file is the working guide for agents editing `claw-eco`.
 
+Shared infrastructure rules: [infrastructure/AGENTS.md](../infrastructure/AGENTS.md).
+Project architecture, hosting and dated verification:
+[infrastructure/claw-eco.md](../infrastructure/claw-eco.md).
+
 ## First rule: sync with remote before changing anything
 
 This repo is actively updated from GitHub Actions and may also receive direct remote edits.
@@ -67,6 +71,7 @@ Important files:
 
 - `index.html`: the entire site, including content, styles, markup, and client-side behavior
 - `favicon.svg`: icon deployed with the page
+- `grok_bot.jpg`: page image included by the regular Pages deployment
 - `update_stats.py`: updates GitHub-derived stats and footer timestamps in HTML files
 - `.github/workflows/static.yml`: deploys the static site to GitHub Pages
 - `.github/workflows/update-stats.yml`: scheduled daily stats refresh and follow-up deploy
@@ -140,8 +145,9 @@ Behavior:
 - Trigger path filter is limited to:
   - `index.html`
   - `favicon.svg`
+  - `grok_bot.jpg`
 - Also supports `workflow_dispatch` and `workflow_call`
-- Copies `index.html` and `favicon.svg` into `_site/`
+- Copies `index.html`, `favicon.svg` and `grok_bot.jpg` into `_site/`
 - Deploys `_site/` to GitHub Pages
 
 ### 2. Daily stats refresh
@@ -157,6 +163,8 @@ Behavior:
 - Commits `index.html` if the generated output changed
 - Pushes the stats update commit back to `main`
 - Deploys the pushed commit to GitHub Pages if anything changed
+- Its artifact currently includes only `index.html` and `favicon.svg`, omitting
+  `grok_bot.jpg`; see the infrastructure note for verified delivery status
 
 Operational implication:
 
