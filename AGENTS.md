@@ -5,6 +5,9 @@ This file is the working guide for agents editing `claw-eco`.
 Shared infrastructure rules: [infrastructure/AGENTS.md](../infrastructure/AGENTS.md).
 Project architecture, hosting and dated verification:
 [infrastructure/claw-eco.md](../infrastructure/claw-eco.md).
+The Thursday 23:35 UTC content audit is a
+[Grok Bot routine](../infrastructure/grok-bot.md), separate from the daily
+GitHub Actions stats job.
 
 ## First rule: sync with remote before changing anything
 
