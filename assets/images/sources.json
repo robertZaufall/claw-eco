@@ -1,0 +1,452 @@
+[
+  {
+    "file": "de672a43c63cfb8e8f7a.png",
+    "source": "https://github.com/Blaizzy.png?size=32",
+    "sha256": "2309c62819960ede5ebd03c0300d89d390edae66ee401d708b592a833bdade7b",
+    "fallback": false
+  },
+  {
+    "file": "c7318ba8763b13679274.jpg",
+    "source": "https://github.com/HKUDS.png?size=32",
+    "sha256": "a733a21a04de11d537d354e3e2a13c83a7b14e5ba1983c5d630382a4759dcf65",
+    "fallback": false
+  },
+  {
+    "file": "c8d6f78ca0f818bce231.png",
+    "source": "https://github.com/NVIDIA.png?size=32",
+    "sha256": "44aae04fd18d3d1976bbb7ff05e2305c213a6c8d34a2a20a46313b40cdd3c65e",
+    "fallback": false
+  },
+  {
+    "file": "130cd70e3818afaa5d4c.png",
+    "source": "https://github.com/NousResearch.png?size=32",
+    "sha256": "f8bf2ec9362191fe347a989ad060d641591a61ef9eaa930c8da93f6206227886",
+    "fallback": false
+  },
+  {
+    "file": "8be54d2b0a3104868906.jpg",
+    "source": "https://github.com/PrimeIntellect-ai.png?size=32",
+    "sha256": "4ca8731a87073aa04a6f25bd511ca544f280f49bed31931b9b2d14278bbf2bea",
+    "fallback": false
+  },
+  {
+    "file": "a84f789b5807937dc57d.png",
+    "source": "https://github.com/RightNow-AI.png?size=32",
+    "sha256": "e7734efdedd8a52ab66cd0238fa1373f70cb87fe4f593be8c2da5691a80dbb24",
+    "fallback": false
+  },
+  {
+    "file": "07dd33947f56bb2b7eb0.png",
+    "source": "https://github.com/TencentCloud.png?size=32",
+    "sha256": "8f708bd1c160255ee0f3e55b1eea2d213097d478e1179f869fb1fd10980e87a6",
+    "fallback": false
+  },
+  {
+    "file": "6a6f8d2936c3ca5afd91.png",
+    "source": "https://github.com/TinyAGI.png?size=32",
+    "sha256": "165ea324595e849c373a7b9b22688b8181d55dde528b2d4916b7942b97441911",
+    "fallback": false
+  },
+  {
+    "file": "2c6446eb238fe55a22b8.png",
+    "source": "https://github.com/agentscope-ai.png?size=32",
+    "sha256": "d43c570e16b8d60f5a6d1e8c4024d933630b43beedbcc97a40183559f9975fad",
+    "fallback": false
+  },
+  {
+    "file": "eddb3e305059b01659b9.jpg",
+    "source": "https://github.com/block.png?size=32",
+    "sha256": "5a3bc15a33d4030b5c20e6f94b33c1c2e124463239c0262ac810f0e6b5f1379e",
+    "fallback": false
+  },
+  {
+    "file": "5a8280dc9e1e73b0421a.png",
+    "source": "https://github.com/bytedance.png?size=32",
+    "sha256": "853ba3435284d6749c791a0eb074c26309a234644d96550e5026d5e3037b4380",
+    "fallback": false
+  },
+  {
+    "file": "4ba42e3d363c8642305f.jpg",
+    "source": "https://github.com/chrysb.png?size=32",
+    "sha256": "3300f2c695d97f13fe71623a27ca87d2ff21bab23425f9ad6c69961ce3d34669",
+    "fallback": false
+  },
+  {
+    "file": "15c238b8996ee5f268d4.jpg",
+    "source": "https://github.com/cloudflare.png?size=32",
+    "sha256": "474c0c56557b8c876144229e2fc473a3386955365f1533cd857a256f8f0afc2d",
+    "fallback": false
+  },
+  {
+    "file": "d6e23401924c4a2d3cfd.png",
+    "source": "https://github.com/coleam00.png?size=32",
+    "sha256": "af5d9eb0e87e8f0ce3c8306b6cb437e63c113e59546fb9bcb0d027073a0a1aa8",
+    "fallback": false
+  },
+  {
+    "file": "8dddf1cdba6f18785a56.png",
+    "source": "https://github.com/deepseek-ai.png?size=32",
+    "sha256": "383dc938ce275ae52c0c8b3f3d41accab5bab967de29f251718e9e3fd4308e82",
+    "fallback": false
+  },
+  {
+    "file": "5528331098e27ee809ef.png",
+    "source": "https://github.com/microsoft.png?size=32",
+    "sha256": "a9a6028a103cbfc862894cf8ad97b3d767da17d5415d899b99e34924446029a4",
+    "fallback": false
+  },
+  {
+    "file": "11b76146bb4650efafeb.png",
+    "source": "https://github.com/nanocoai.png?size=32",
+    "sha256": "d412c0095d3e52eeab0cfafabf452b9b609cbb70c81342240e0c3413020c0071",
+    "fallback": false
+  },
+  {
+    "file": "8eb35b593798ae4b1f80.png",
+    "source": "https://github.com/nearai.png?size=32",
+    "sha256": "369a57dff3081d3dead967808db159e7ca0a705a8b1c864f0f88d2dae823440f",
+    "fallback": false
+  },
+  {
+    "file": "e6b359a347e169ae03bb.png",
+    "source": "https://github.com/nullclaw.png?size=32",
+    "sha256": "05ed9f6c7861c7c50cf84d7173a4b6434221551700db0b9e50c6cb32337f0bf8",
+    "fallback": false
+  },
+  {
+    "file": "af27ab142b54cd7dffb4.png",
+    "source": "https://github.com/omnigent-ai.png?size=32",
+    "sha256": "38868f68db2eaaf07d7860267abaecbbe9a86f05ee254ac3df79c0949024ef91",
+    "fallback": false
+  },
+  {
+    "file": "bc2570e5f9a3545324b2.jpg",
+    "source": "https://github.com/openclaw.png?size=32",
+    "sha256": "1f362d65d45a4c91b787555e75bd51f55eec210572db8def5044de0ca03a4a3f",
+    "fallback": false
+  },
+  {
+    "file": "be55cb01f9a9d0909ff4.png",
+    "source": "https://github.com/opensandbox-group.png?size=32",
+    "sha256": "0af40567a17386ac5856950c222b5140f1c1b38c5722be6010b30d885ae52c7c",
+    "fallback": false
+  },
+  {
+    "file": "f4f0dd33a70544b8f244.png",
+    "source": "https://github.com/paperclipai.png?size=32",
+    "sha256": "fdebdf69c878f1edbed5068e37e349b03fc781b34ea1e513c28038d069c609c1",
+    "fallback": false
+  },
+  {
+    "file": "7bc19491d85d8bd1c9e9.png",
+    "source": "https://github.com/prompt-security.png?size=32",
+    "sha256": "60c445165b50d7726fab5174b7aaf182dfc67ac6a626761ba12e11104f57168b",
+    "fallback": false
+  },
+  {
+    "file": "587fab90af0c69c5cecd.png",
+    "source": "https://github.com/rivet-dev.png?size=32",
+    "sha256": "6fc66ab8e3c0f522d33e6418d0eea74d16707aecd03182b7a32b057baad96a0c",
+    "fallback": false
+  },
+  {
+    "file": "87090f3c0858649419e5.png",
+    "source": "https://github.com/sipeed.png?size=32",
+    "sha256": "25c5e6ed9e36b8d7711dc99e6f10ffd621e7bcd7ba6da0bef4ff8081fb8eab84",
+    "fallback": false
+  },
+  {
+    "file": "ec52dd6958f256665e88.jpg",
+    "source": "https://github.com/tnm.png?size=32",
+    "sha256": "f3f65c7da41728a64aa012825a8f3b42c336212b96a7bc016253c6d53cb0e714",
+    "fallback": false
+  },
+  {
+    "file": "297c9af20ae81d4c6acc.png",
+    "source": "https://github.com/withastro.png?size=32",
+    "sha256": "d9cecff3d984de0569c6b9b2ef8b3e71c9b457566e74df9a7d721972a92f1cb9",
+    "fallback": false
+  },
+  {
+    "file": "6e784e14ac725a1e7c66.jpg",
+    "source": "https://github.com/zeroclaw-labs.png?size=32",
+    "sha256": "821a787da57058862799ca2388cdd295af90b5863aff45adb6af5babb53c921f",
+    "fallback": false
+  },
+  {
+    "file": "22f18c5f7c1dd442eb3a.png",
+    "source": "https://www.google.com/s2/favicons?domain=alibaba.com&sz=32",
+    "sha256": "1652c071d52fc420fcaeb791d3194cc33bc18d8d829dd294c5fa9d7f1732d2f4",
+    "fallback": false
+  },
+  {
+    "file": "d8c62171c8c0d7240eb3.png",
+    "source": "https://www.google.com/s2/favicons?domain=anthropic.com&sz=32",
+    "sha256": "6747e259ec073b73091112aceea1a0d159f91bf8845e19fb08248f2065ca9e69",
+    "fallback": false
+  },
+  {
+    "file": "f0526a1debd2c9aa07d4.png",
+    "source": "https://www.google.com/s2/favicons?domain=antigravity.google&sz=32",
+    "sha256": "54bf114f08fb309f2bbf1507e8fa24bd1fdb44ee4517458af926841bd558623f",
+    "fallback": false
+  },
+  {
+    "file": "1b378e287ce3a7786079.png",
+    "source": "https://www.google.com/s2/favicons?domain=asus.com&sz=32",
+    "sha256": "3901084e64031cf40c0dacc28f76befb1d9d9ae14283f74d0e2d2561ddda8d16",
+    "fallback": false
+  },
+  {
+    "file": "0c2840d7233d08c259f0.png",
+    "source": "https://www.google.com/s2/favicons?domain=baidu.com&sz=32",
+    "sha256": "0f083e0170d33c5e9578b39452aa452e21c959e77d8cb94e33c4e37ece0d3593",
+    "fallback": false
+  },
+  {
+    "file": "36bbeeb85bc1379acae6.png",
+    "source": "https://www.google.com/s2/favicons?domain=chatgpt.com&sz=32",
+    "sha256": "06ca57b68ab40f9ddf25552e19633ed351449ee7c06e0f1e6596ec64f62bf7bf",
+    "fallback": false
+  },
+  {
+    "file": "30502eff2c652495188b.png",
+    "source": "https://www.google.com/s2/favicons?domain=claude.com&sz=32",
+    "sha256": "ce7e8cafe276c4d6820387652d77437772fb2efa7511bff92a4e7664cd2bee51",
+    "fallback": false
+  },
+  {
+    "file": "4f30f58b6af33192be9f.png",
+    "source": "https://www.google.com/s2/favicons?domain=cloudbot-ai.com&sz=32",
+    "sha256": "1b621fdc63a60abf57892277dfd73f0c6065584d47a03692d0f917954387cf56",
+    "fallback": false
+  },
+  {
+    "file": "47bb6b22549252747c35.png",
+    "source": "https://www.google.com/s2/favicons?domain=cmcm.com&sz=32",
+    "sha256": "8870f1b799d2600e9fa3e182a5852aad0e6f3be3a434c8682fae92c44ba3d58c",
+    "fallback": false
+  },
+  {
+    "file": "517f5100b192846f25bc.jpg",
+    "source": "https://www.google.com/s2/favicons?domain=codebuddy.cn&sz=32",
+    "sha256": "3ef52917d75f2b67fee61b54b9424d7cf6034edaafa526cabb8a889abce0b31e",
+    "fallback": false
+  },
+  {
+    "file": "0702260572ba2066703d.png",
+    "source": "https://www.google.com/s2/favicons?domain=cognition.ai&sz=32",
+    "sha256": "842d12473ec221dd9d9f8a1f99f17a88afd1e17f59c4a7b6a07c95e25c437a32",
+    "fallback": false
+  },
+  {
+    "file": "866bf754098bb3a602eb.svg",
+    "source": "https://www.google.com/s2/favicons?domain=copilot.microsoft.com&sz=32",
+    "sha256": "ee707edd97e61314d9e269cc066d4e5164c70ee32d320c766cbcfb7c0150de27",
+    "fallback": true
+  },
+  {
+    "file": "e71387865cd87d75aeac.png",
+    "source": "https://www.google.com/s2/favicons?domain=dangbei.com&sz=32",
+    "sha256": "b0e95164acf0bd1da56da1c3c79fd4d6d9ad077fd242e330d8d29b9100d4eee8",
+    "fallback": false
+  },
+  {
+    "file": "fb909eff20857ad5fb00.png",
+    "source": "https://www.google.com/s2/favicons?domain=devin.ai&sz=32",
+    "sha256": "afbdd70360001c6a060b6830170604422d8bb61ff1b75dc0d7b4c6d64167dd1c",
+    "fallback": false
+  },
+  {
+    "file": "d2635b12c60dc0b8fb3f.png",
+    "source": "https://www.google.com/s2/favicons?domain=dingtalk.com&sz=32",
+    "sha256": "063487ebfd8be4460becb41b6f2f370c251ddca9fa4777352f66941a99508859",
+    "fallback": false
+  },
+  {
+    "file": "5af4128799e077011987.png",
+    "source": "https://www.google.com/s2/favicons?domain=dockclaw.com&sz=32",
+    "sha256": "8733369b2b55177db44b7978dd1cca7616b952a80a0b90fecb47afce8270960c",
+    "fallback": false
+  },
+  {
+    "file": "09a481d44b393c8181fa.png",
+    "source": "https://www.google.com/s2/favicons?domain=gemini.google.com&sz=32",
+    "sha256": "3868a4bd4a017a4d6d31c8246258cb1c8f2e63198c97753392350749c3306dba",
+    "fallback": false
+  },
+  {
+    "file": "9d44e65b2fb030dc5766.png",
+    "source": "https://www.google.com/s2/favicons?domain=genspark.ai&sz=32",
+    "sha256": "173a0bc3229bee7f4675d2e8576d15ae3cf86e4824b1ebcc05af54258b2932b2",
+    "fallback": false
+  },
+  {
+    "file": "7756f5cf5c61e8b3a753.png",
+    "source": "https://www.google.com/s2/favicons?domain=google.com&sz=32",
+    "sha256": "0504d5e09ee20d436e733ae1d5f545a3e4fcad66889cf98670512ea908a9ad8c",
+    "fallback": false
+  },
+  {
+    "file": "100fdee3de1339407a5d.png",
+    "source": "https://www.google.com/s2/favicons?domain=huawei.com&sz=32",
+    "sha256": "5f63640773be0261e8fb7b408a1827e1230e05a11448f22653cc15a907138843",
+    "fallback": false
+  },
+  {
+    "file": "a9caf2de58dbdccad3c4.svg",
+    "source": "https://www.google.com/s2/favicons?domain=jd.com&sz=32",
+    "sha256": "ee707edd97e61314d9e269cc066d4e5164c70ee32d320c766cbcfb7c0150de27",
+    "fallback": true
+  },
+  {
+    "file": "67818e4ebaa7f7185d6f.png",
+    "source": "https://www.google.com/s2/favicons?domain=kimi.com&sz=32",
+    "sha256": "626117457e54bb61f2e35ed3aa083d87a5a2202c5785ed8be77a2acaf82163f5",
+    "fallback": false
+  },
+  {
+    "file": "52f24a7f38e07daf0afc.png",
+    "source": "https://www.google.com/s2/favicons?domain=lindy.ai&sz=32",
+    "sha256": "18db1b3b313524741699092c7825e9c9e3cad35d5649aec8ac83570321561683",
+    "fallback": false
+  },
+  {
+    "file": "a3286119234c0d6c6f96.png",
+    "source": "https://www.google.com/s2/favicons?domain=manus.im&sz=32",
+    "sha256": "9c9f18234e5f7fcf5405ff8e16dfa92c71d1ec81cc95e24269c33001f4e30f67",
+    "fallback": false
+  },
+  {
+    "file": "62f8456f842a829823ea.png",
+    "source": "https://www.google.com/s2/favicons?domain=meta.com&sz=32",
+    "sha256": "808c63205f914bba87998104e040cac468036cfd1ea4a966ae71f6ebb058046e",
+    "fallback": false
+  },
+  {
+    "file": "233cf121a2eed7db622e.png",
+    "source": "https://www.google.com/s2/favicons?domain=microsoft.com&sz=32",
+    "sha256": "32fdca4d0cdf1a6aa625c50b188a8ccef0ed9ed7714eb37e796049c4dc10be2b",
+    "fallback": false
+  },
+  {
+    "file": "8233798be6a2306f52b1.png",
+    "source": "https://www.google.com/s2/favicons?domain=minimax.io&sz=32",
+    "sha256": "b56a9594c74534fa4ff335965fdb6f22c59723dabbe8fecededdc21193bb354d",
+    "fallback": false
+  },
+  {
+    "file": "7510c266e531f4f2bc78.png",
+    "source": "https://www.google.com/s2/favicons?domain=msty.ai&sz=32",
+    "sha256": "de059424300000dc85e81004a7f9e7df3ef5079619a1a9853d736d0529441de3",
+    "fallback": false
+  },
+  {
+    "file": "4dd5424798371b7b83f3.png",
+    "source": "https://www.google.com/s2/favicons?domain=muse.ai&sz=32",
+    "sha256": "504c08e233bff6bd87af909ac2283641632d78f1d64f7dd7f47bf88a227b15c0",
+    "fallback": false
+  },
+  {
+    "file": "cafdec55bd6ec6168e11.png",
+    "source": "https://www.google.com/s2/favicons?domain=ninjatech.ai&sz=32",
+    "sha256": "e59cbcc27b9f98a028136b250fcf20fd6ccab38c2eb78e3aac99a28f2f2d015a",
+    "fallback": false
+  },
+  {
+    "file": "fda055521a6bba03ea57.png",
+    "source": "https://www.google.com/s2/favicons?domain=openai.com&sz=32",
+    "sha256": "6345aa7e664afc8cd5287ef4eccac4eb682c30715d87244c7dea9dca78c43674",
+    "fallback": false
+  },
+  {
+    "file": "72f89049bfa58d4e0385.png",
+    "source": "https://www.google.com/s2/favicons?domain=perplexity.ai&sz=32",
+    "sha256": "0edc04f29a470accabdbcec0e9be804d0247fe3e8302c9d0f3186089d3ca3176",
+    "fallback": false
+  },
+  {
+    "file": "2c7b8a007bdf4496845b.png",
+    "source": "https://www.google.com/s2/favicons?domain=petclaw.ai&sz=32",
+    "sha256": "3e71515f393b3b1b73da766369b70aa56df84242a620d60daeddf4310a693579",
+    "fallback": false
+  },
+  {
+    "file": "edc3d551f86d1de3921d.png",
+    "source": "https://www.google.com/s2/favicons?domain=pokee.ai&sz=32",
+    "sha256": "bd9b8b3506e38822d9d33517872176b5a30612e45e7a2700c42cb2747f9b301a",
+    "fallback": false
+  },
+  {
+    "file": "6b4238379ea232718e80.png",
+    "source": "https://www.google.com/s2/favicons?domain=qq.com&sz=32",
+    "sha256": "1b57b560a59e6c5ec9c2dcae71fe5980ea737878aa5740e8bb8a13e6b4fe69b2",
+    "fallback": false
+  },
+  {
+    "file": "bac35b9f138a65c7e133.svg",
+    "source": "https://www.google.com/s2/favicons?domain=redfinger.com&sz=32",
+    "sha256": "ee707edd97e61314d9e269cc066d4e5164c70ee32d320c766cbcfb7c0150de27",
+    "fallback": true
+  },
+  {
+    "file": "27ee1ac434e7a1d6c562.png",
+    "source": "https://www.google.com/s2/favicons?domain=tencent.com&sz=32",
+    "sha256": "4f156f50a3ac84096faed1b90c1a2dbc4df032157ed10800899b5783e2afbdd2",
+    "fallback": false
+  },
+  {
+    "file": "6e103ad1698433a7f4b2.png",
+    "source": "https://www.google.com/s2/favicons?domain=volcengine.com&sz=32",
+    "sha256": "e2cc285adb78e0968cdde6e0a1e9970e91857563f9db7320b939238d6c4186b9",
+    "fallback": false
+  },
+  {
+    "file": "5d92a8e55bf13c42c25e.png",
+    "source": "https://www.google.com/s2/favicons?domain=wind.com.cn&sz=32",
+    "sha256": "2e951aa815d3be422ebc067f15220072693822864aa8bbff7351a562455e5f8a",
+    "fallback": false
+  },
+  {
+    "file": "8a3d747b642b9a1390b4.png",
+    "source": "https://www.google.com/s2/favicons?domain=x.ai&sz=32",
+    "sha256": "10bfcfed3345ea490d9862054c6acaeae0d9600529c9c4ecaa2b5577d914a500",
+    "fallback": false
+  },
+  {
+    "file": "613b34f3039ee44644af.png",
+    "source": "https://www.google.com/s2/favicons?domain=xcloud.host&sz=32",
+    "sha256": "f8c5d06a953275385188f131ff5397dfe17101f30606462cd21b21c47d89dbe4",
+    "fallback": false
+  },
+  {
+    "file": "96f5871700fcc044ce34.png",
+    "source": "https://www.google.com/s2/favicons?domain=xfyun.cn&sz=32",
+    "sha256": "a4ae43ad69b6b6cbb04280158cf79762ca88e09c4efbfd5db671d22dc5a39136",
+    "fallback": false
+  },
+  {
+    "file": "355ef56b53b212bc8677.png",
+    "source": "https://www.google.com/s2/favicons?domain=xiaomi.com&sz=32",
+    "sha256": "9120d6384ec6fe74b76559819033d677a576a4c6567d72f468613cf0f2a4ae7f",
+    "fallback": false
+  },
+  {
+    "file": "278438058e065a446940.png",
+    "source": "https://www.google.com/s2/favicons?domain=youdao.com&sz=32",
+    "sha256": "d95d76978d08718c0663835622f434ea880981dcbc919005e67e83250809831b",
+    "fallback": false
+  },
+  {
+    "file": "8d5d5966210980eeba2d.png",
+    "source": "https://www.google.com/s2/favicons?domain=zhipuai.cn&sz=32",
+    "sha256": "3cb343ab4d4d948750862fee826e19db43f086fd51938d001a2c6d6863b0437d",
+    "fallback": false
+  },
+  {
+    "file": "a2eddd80d81c0edce252.png",
+    "source": "https://www.google.com/s2/favicons?domain=zo.computer&sz=32",
+    "sha256": "7e016b6dbef5611dc8e0e23e51e3e43a319e6e17aa4245098032abb3f556f087",
+    "fallback": false
+  }
+]

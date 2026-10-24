@@ -8,6 +8,9 @@ on:
       - 'index.html'
       - 'favicon.svg'
       - 'grok_bot.jpg'
+      - 'assets/**'
+      - 'check_assets.py'
+      - '.github/workflows/static.yml'
   workflow_call:
   workflow_dispatch:
 
@@ -33,8 +36,10 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Prepare deploy folder
         run: |
+          python3 check_assets.py
           mkdir _site
           cp index.html favicon.svg grok_bot.jpg _site/
+          cp -R assets _site/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
